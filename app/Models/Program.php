@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Concerns\CleansUpMediaOnDeleteAndReplace;
 use App\Models\Concerns\FlushesSiteCache;
 use App\Models\Concerns\HasSortOrderAndVisibility;
 use Database\Factories\ProgramFactory;
@@ -13,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
 class Program extends Model
 {
     /** @use HasFactory<ProgramFactory> */
-    use FlushesSiteCache, HasFactory, HasSortOrderAndVisibility;
+    use CleansUpMediaOnDeleteAndReplace, FlushesSiteCache, HasFactory, HasSortOrderAndVisibility;
 
     /**
      * The attributes that are mass assignable.

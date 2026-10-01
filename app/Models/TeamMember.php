@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Concerns\CleansUpMediaOnDeleteAndReplace;
 use App\Models\Concerns\FlushesSiteCache;
 use App\Models\Concerns\HasSortOrderAndVisibility;
 use Database\Factories\TeamMemberFactory;
@@ -14,7 +15,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class TeamMember extends Model
 {
     /** @use HasFactory<TeamMemberFactory> */
-    use FlushesSiteCache, HasFactory, HasSortOrderAndVisibility;
+    use CleansUpMediaOnDeleteAndReplace, FlushesSiteCache, HasFactory, HasSortOrderAndVisibility;
 
     /**
      * The attributes that are mass assignable.
