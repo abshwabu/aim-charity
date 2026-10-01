@@ -41,18 +41,18 @@ class LandingSectionsRenderTest extends TestCase
         $response->assertOk();
 
         // 1. Hero
-        $response->assertSee('Empowering Communities, Transforming Lives Together');
-        $response->assertSee('65,000');
+        $response->assertSee('When Communities Unite, Hope Becomes Real');
+        $response->assertSee('142K+');
 
         // 2. About
-        $response->assertSee('Who We Are');
-        $response->assertSee('A Unified Front for Community Relief');
+        $response->assertSee('Our Coalition Story');
+        $response->assertSee('Many Groups, One Unbroken Circle');
         $response->assertSee('Radical Transparency');
 
         // 3. Member Groups
         $response->assertSee('Addis Mutual Aid Association');
         $response->assertSee('Oromia Community Elders Committee');
-        $response->assertSee('Amhara Relief & Reconstruction Taskforce');
+        $response->assertSee('Amhara Health & Reconstruction Taskforce');
 
         // 4. Programs
         $response->assertSee('Emergency Nutritional Relief & Grain Reserves');
@@ -60,7 +60,7 @@ class LandingSectionsRenderTest extends TestCase
 
         // 5. Impact Stats
         $response->assertSee('Individuals Provided Direct Emergency Relief');
-        $response->assertSee('Grassroots Allocation Directly Reaching Communities');
+        $response->assertSee('Direct Grassroots Allocation & Open Auditing');
 
         // 6. How It Works
         $response->assertSee('Grassroots Need Verification');
@@ -68,16 +68,16 @@ class LandingSectionsRenderTest extends TestCase
         $response->assertSee('Dignified Direct Distribution');
 
         // 7. Testimonials
-        $response->assertSee('W/ro Almaz Tadesse');
-        $response->assertSee('Dawit Mengistu');
+        $response->assertSee('W/ro Aster Tesfaye');
+        $response->assertSee('Dr. Dawit Bekele');
 
         // 8. Gallery
         $response->assertSee('Volunteers loading sacks of grain for rural woreda distribution.');
 
         // 9. Donate
         $response->assertSee('Commercial Bank of Ethiopia (CBE)');
-        $response->assertSee('1000456789123');
-        $response->assertSee('Telebirr SuperApp');
+        $response->assertSee('1000-0000-0000-0000');
+        $response->assertSee('Telebirr Mobile Money');
 
         // 10. Volunteer
         $response->assertSee('Full Name');
@@ -89,7 +89,7 @@ class LandingSectionsRenderTest extends TestCase
 
         // 12. Partners
         $response->assertSee('Ethiopian Red Cross Society');
-        $response->assertSee('WaterAid Ethiopia');
+        $response->assertSee('Addis Ababa University Community Service');
 
         // 13. News
         $response->assertSee('Emergency Grain Convoy Reaches 2,400 Families in North Wollo');

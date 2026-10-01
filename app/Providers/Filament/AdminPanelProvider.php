@@ -2,6 +2,10 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Widgets\HowToEditWidget;
+use App\Filament\Widgets\QuickLinksWidget;
+use App\Filament\Widgets\SubmissionStatsWidget;
+use App\Support\Site;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -11,7 +15,6 @@ use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets\AccountWidget;
-use Filament\Widgets\FilamentInfoWidget;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
@@ -28,10 +31,12 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
-            ->brandName('Aim Charity')
+            ->brandName(fn () => Site::settings()['branding']['site_name'] ?? 'Aim Charity')
             ->brandLogo(fn () => view('filament.admin.logo'))
             ->brandLogoHeight('2.5rem')
-            ->favicon(asset('favicon.ico'))
+            ->favicon(fn () => filled(Site::settings()['branding']['favicon'] ?? null)
+                ? Site::imageUrl(Site::settings()['branding']['favicon'])
+                : asset('favicon.ico'))
             ->colors([
                 'primary' => Color::Emerald,
             ])
@@ -42,8 +47,10 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\Filament\Widgets')
             ->widgets([
+                SubmissionStatsWidget::class,
+                QuickLinksWidget::class,
+                HowToEditWidget::class,
                 AccountWidget::class,
-                FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

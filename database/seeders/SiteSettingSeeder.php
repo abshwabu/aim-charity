@@ -20,10 +20,10 @@ class SiteSettingSeeder extends Seeder
                 'branding' => [
                     'site_name' => 'Aim Charity',
                     'tagline' => 'A Coalition of Community Organizations in Ethiopia',
-                    'logo_light' => null,
-                    'logo_dark' => null,
-                    'favicon' => null,
-                    'footer_logo' => null,
+                    'logo_light' => 'branding/logo-light.svg',
+                    'logo_dark' => 'branding/logo-dark.svg',
+                    'favicon' => 'branding/favicon.svg',
+                    'footer_logo' => 'branding/footer-logo.svg',
                 ],
                 'theme' => [
                     'primary' => '#1b4332',
@@ -61,7 +61,7 @@ class SiteSettingSeeder extends Seeder
                 'seo' => [
                     'meta_title' => 'Aim Charity — A Coalition of Community Organizations in Ethiopia',
                     'meta_description' => 'Aim Charity unites community groups across Ethiopia to coordinate relief, build mutual aid networks, and uplift vulnerable families.',
-                    'og_image' => null,
+                    'og_image' => 'branding/logo-dark.svg',
                     'twitter_handle' => '@aimcharity',
                     'analytics_snippet' => null,
                 ],

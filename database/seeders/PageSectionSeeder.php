@@ -26,8 +26,18 @@ class PageSectionSeeder extends Seeder
                 'anchor' => 'hero',
                 'content' => array_merge(SectionTypes::defaultContent('hero'), [
                     'eyebrow' => 'Coalition of Grassroots Organizations',
-                    'heading' => 'Empowering Communities, Transforming Lives Together',
-                    'subheading' => 'A coalition of grassroots community organizations in Ethiopia united to deliver mutual aid, relief, and sustainable impact to families in need.',
+                    'heading' => 'When Communities Unite, Hope Becomes Real',
+                    'subheading' => 'A coalition of grassroots community organizations across Ethiopia united to deliver mutual aid, relief, and sustainable impact to families in need.',
+                    'collage_images' => [
+                        'placeholders/hero/hero-collage-1.svg',
+                        'placeholders/hero/hero-collage-2.svg',
+                        'placeholders/hero/hero-collage-3.svg',
+                    ],
+                    'stat_chips' => [
+                        ['value' => '6', 'label' => 'Community Groups', 'icon' => 'heroicon-o-user-group'],
+                        ['value' => '142K+', 'label' => 'People Helped', 'icon' => 'heroicon-o-heart'],
+                        ['value' => '100%', 'label' => 'Direct Transparency', 'icon' => 'heroicon-o-check-badge'],
+                    ],
                     'body' => null,
                 ]),
                 'style' => [
@@ -45,10 +55,14 @@ class PageSectionSeeder extends Seeder
                 'nav_label' => 'About',
                 'anchor' => 'about',
                 'content' => array_merge(SectionTypes::defaultContent('about'), [
-                    'eyebrow' => 'Who We Are',
-                    'heading' => 'A Unified Front for Community Relief',
-                    'subheading' => 'Aim Charity brings together local Ethiopian groups to coordinate resources, eliminate duplication, and deliver direct assistance.',
-                    'body' => '<p>By acting as a "group of groups," Aim Charity combines logistics, verifies community needs, and ensures complete transparency in aid distribution across Ethiopia.</p>',
+                    'eyebrow' => 'Our Coalition Story',
+                    'heading' => 'Many Groups, One Unbroken Circle',
+                    'subheading' => 'How grassroots community organizations across Ethiopia came together to coordinate relief with dignity and solidarity.',
+                    'body' => '<p>In times of acute drought, conflict, and economic hardship, individual neighborhood groups and elder councils were each trying to respond independently. In 2021, representatives from community committees across Ethiopia sat down together. We realized that while our regions and languages differed, our mission was identical: safeguarding human life and dignity.</p><p>Aim Charity was born as a "group of groups." Instead of competing for fragmented resources or duplicating logistical convoys, our coalition shares storage warehouses, pools transport fleets, and combines volunteer networks to reach the most remote woredas quickly, fairly, and transparently.</p>',
+                    'photos' => [
+                        'placeholders/gallery/gallery-1.svg',
+                        'placeholders/gallery/gallery-2.svg',
+                    ],
                 ]),
                 'style' => [
                     'background_type' => 'color',

@@ -63,6 +63,8 @@ class SiteSettings extends Page
         'Outfit' => 'Outfit (Clean Display)',
         'Space Grotesk' => 'Space Grotesk (Modern Tech)',
         'Lexend' => 'Lexend (High Readability)',
+        'Noto Sans Ethiopic' => 'Noto Sans Ethiopic (Amharic Clean Sans)',
+        'Noto Serif Ethiopic' => 'Noto Serif Ethiopic (Amharic Editorial Serif)',
         'custom' => 'Custom Font Name...',
     ];
 
