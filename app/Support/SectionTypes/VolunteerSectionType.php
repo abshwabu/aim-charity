@@ -37,6 +37,8 @@ class VolunteerSectionType extends BaseSectionType
                 'skills' => 'Your Skills & Expertise',
                 'availability' => 'Availability (Hours / Days per week)',
                 'message' => 'Why do you want to volunteer with Aim Charity?',
+                'member_group' => 'Preferred Member Group',
+                'all_groups' => 'Any Group / General Coalition',
             ],
             'button_label' => 'Submit Volunteer Application',
             'success_message' => 'Thank you for stepping up to help! Our volunteer coordinator will reach out to you within 48 hours.',
@@ -82,6 +84,14 @@ class VolunteerSectionType extends BaseSectionType
                         TextInput::make('content.labels.message')
                             ->label('Message / Motivation Input Label')
                             ->default('Why do you want to volunteer with Aim Charity?'),
+
+                        TextInput::make('content.labels.member_group')
+                            ->label('Member Group Select Label')
+                            ->default('Preferred Member Group'),
+
+                        TextInput::make('content.labels.all_groups')
+                            ->label('Default Member Group Option')
+                            ->default('Any Group / General Coalition'),
                     ]),
                 ]),
 

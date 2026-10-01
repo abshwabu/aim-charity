@@ -387,6 +387,95 @@
                             @endforeach
                         </div>
                     @endif
+
+                    {{-- Newsletter Subscription Form with Progressive Enhancement --}}
+                    @if(filled($footer['newsletter_heading'] ?? null) || filled($footer['newsletter_placeholder'] ?? null))
+                        <div
+                            class="pt-2 max-w-md"
+                            x-data="{
+                                submitting: false,
+                                subscribed: false,
+                                message: '',
+                                errorMessage: '',
+                                submitNewsletter(e) {
+                                    this.submitting = true;
+                                    this.errorMessage = '';
+                                    fetch('{{ route('newsletter.store') }}', {
+                                        method: 'POST',
+                                        headers: {
+                                            'Accept': 'application/json',
+                                            'X-Requested-With': 'XMLHttpRequest'
+                                        },
+                                        body: new FormData(e.target)
+                                    })
+                                    .then(res => res.json().then(data => ({ ok: res.ok, data })))
+                                    .then(result => {
+                                        this.submitting = false;
+                                        if (result.ok && result.data.success) {
+                                            this.subscribed = true;
+                                            this.message = result.data.message;
+                                            e.target.reset();
+                                        } else {
+                                            let errs = result.data.errors ? Object.values(result.data.errors).flat() : [];
+                                            this.errorMessage = errs[0] || result.data.message || '';
+                                        }
+                                    })
+                                    .catch(() => {
+                                        this.submitting = false;
+                                        this.errorMessage = '';
+                                    });
+                                }
+                            }"
+                        >
+                            @if(filled($footer['newsletter_heading'] ?? null))
+                                <span class="text-xs font-semibold tracking-wider uppercase text-text/90 block mb-2">
+                                    {{ $footer['newsletter_heading'] }}
+                                </span>
+                            @endif
+
+                            <template x-if="subscribed">
+                                <div class="p-3 rounded-theme bg-primary/10 border border-primary/20 text-primary text-xs font-medium">
+                                    <span x-text="message"></span>
+                                </div>
+                            </template>
+
+                            <template x-if="errorMessage">
+                                <div class="p-2.5 rounded-theme bg-red-500/10 border border-red-500/20 text-red-700 text-xs mb-2">
+                                    <span x-text="errorMessage"></span>
+                                </div>
+                            </template>
+
+                            <form
+                                x-show="!subscribed"
+                                action="{{ route('newsletter.store') }}"
+                                method="POST"
+                                class="flex gap-2"
+                                @submit.prevent="submitNewsletter($event)"
+                            >
+                                @csrf
+                                <input type="text" name="_hp_website" value="" class="hidden sr-only" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                                <input type="hidden" name="_form_time" value="{{ \App\Support\SpamProtection::generateToken() }}" />
+
+                                <input
+                                    type="email"
+                                    name="email"
+                                    required
+                                    placeholder="{{ $footer['newsletter_placeholder'] ?? '' }}"
+                                    class="w-full px-3.5 py-2 text-xs rounded-theme bg-background border border-border text-text placeholder-text-muted focus:outline-none focus:ring-1 focus:ring-primary"
+                                />
+
+                                @if(filled($footer['newsletter_button'] ?? null))
+                                    <button
+                                        type="submit"
+                                        class="px-3.5 py-2 text-xs font-semibold rounded-theme bg-primary text-white hover:bg-primary-hover focus:outline-none focus:ring-1 focus:ring-primary shrink-0 transition-colors"
+                                        :disabled="submitting"
+                                    >
+                                        {{ $footer['newsletter_button'] }}
+                                    </button>
+                                @endif
+                            </form>
+                        </div>
+                    @endif
                 </div>
 
                 {{-- Column 2: Navigation Links --}}

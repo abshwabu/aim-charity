@@ -13,8 +13,8 @@
     $labels = is_array($content['labels'] ?? null) ? $content['labels'] : [];
     $buttonLabel = $content['button_label'] ?? null;
     $privacyNote = $content['privacy_note'] ?? null;
-    $showDirectContacts = !empty($content['show_direct_contacts']);
-    $showMap = !empty($content['show_map']);
+    $showDirectContacts = ! empty($content['show_direct_contacts']);
+    $showMap = ! empty($content['show_map']);
 
     $contactInfo = $settings?->contact ?? [];
     $hasDirectDetails = filled($contactInfo['email'] ?? null) ||
@@ -108,11 +108,82 @@
                 </div>
             @endif
 
-            {{-- Right Column: Inquiries Form --}}
+            {{-- Right Column: Inquiries Form with Progressive Enhancement --}}
             <div class="{{ ($showDirectContacts && $hasDirectDetails) ? 'lg:col-span-7' : 'lg:col-span-12 max-w-3xl mx-auto w-full' }}">
-                <div class="rounded-theme bg-surface border border-border p-6 sm:p-10 shadow-sm">
-                    <form action="#" method="POST" class="flex flex-col gap-6" @submit.prevent>
+                <div
+                    class="rounded-theme bg-surface border border-border p-6 sm:p-10 shadow-sm"
+                    x-data="{
+                        submitting: false,
+                        submitted: false,
+                        successMessage: '{{ addslashes($content['success_message'] ?? '') }}',
+                        errorMessage: '',
+                        submitForm(e) {
+                            this.submitting = true;
+                            this.errorMessage = '';
+                            fetch('{{ route('contact.store') }}', {
+                                method: 'POST',
+                                headers: {
+                                    'Accept': 'application/json',
+                                    'X-Requested-With': 'XMLHttpRequest'
+                                },
+                                body: new FormData(e.target)
+                            })
+                            .then(res => res.json().then(data => ({ ok: res.ok, status: res.status, data })))
+                            .then(result => {
+                                this.submitting = false;
+                                if (result.ok && result.data.success) {
+                                    this.submitted = true;
+                                    if (result.data.message) {
+                                        this.successMessage = result.data.message;
+                                    }
+                                    e.target.reset();
+                                } else {
+                                    let errs = result.data.errors ? Object.values(result.data.errors).flat() : [];
+                                    this.errorMessage = errs[0] || result.data.message || '';
+                                }
+                            })
+                            .catch(() => {
+                                this.submitting = false;
+                                this.errorMessage = '';
+                            });
+                        }
+                    }"
+                >
+                    {{-- Non-JS Flash Success Message --}}
+                    @if(session('success'))
+                        <div class="p-6 rounded-theme bg-primary/10 border border-primary/20 text-primary text-center flex flex-col items-center gap-3 mb-6">
+                            <x-icon name="heroicon-o-check-circle" class="w-8 h-8 text-accent" />
+                            <p class="text-base font-medium text-text">{{ session('success') }}</p>
+                        </div>
+                    @endif
+
+                    {{-- Alpine Inline Success Message --}}
+                    <template x-if="submitted">
+                        <div class="p-6 rounded-theme bg-primary/10 border border-primary/20 text-primary text-center flex flex-col items-center gap-3">
+                            <x-icon name="heroicon-o-check-circle" class="w-8 h-8 text-accent" />
+                            <p class="text-base font-medium text-text" x-text="successMessage"></p>
+                        </div>
+                    </template>
+
+                    {{-- Alpine Inline Error Message --}}
+                    <template x-if="errorMessage">
+                        <div class="p-4 rounded-theme bg-red-500/10 border border-red-500/20 text-red-700 text-sm mb-6">
+                            <p x-text="errorMessage"></p>
+                        </div>
+                    </template>
+
+                    <form
+                        x-show="!submitted"
+                        action="{{ route('contact.store') }}"
+                        method="POST"
+                        class="flex flex-col gap-6"
+                        @submit.prevent="submitForm($event)"
+                    >
                         @csrf
+
+                        {{-- Spam Protection: Honeypot & Time Token --}}
+                        <input type="text" name="_hp_website" value="" class="hidden sr-only" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                        <input type="hidden" name="_form_time" value="{{ \App\Support\SpamProtection::generateToken() }}" />
 
                         {{-- Name --}}
                         @if(filled($labels['name'] ?? null))
@@ -194,6 +265,7 @@
                                     variant="primary"
                                     size="lg"
                                     class="w-full sm:w-auto"
+                                    ::disabled="submitting"
                                 >
                                     {{ $buttonLabel }}
                                 </x-button>

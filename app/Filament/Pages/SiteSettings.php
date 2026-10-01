@@ -529,6 +529,13 @@ class SiteSettings extends Page
                         ->placeholder('contact@aimcharity.org')
                         ->helperText('Displayed in the header top bar, contact section, and footer.'),
 
+                    TextInput::make('contact.notification_email')
+                        ->label('Internal Notification Recipient Email')
+                        ->email()
+                        ->nullable()
+                        ->placeholder('notifications@aimcharity.org')
+                        ->helperText('Incoming contact messages and volunteer applications are dispatched to this address. Falls back to Public Contact Email if left empty.'),
+
                     TextInput::make('contact.phone')
                         ->label('Primary Phone Number')
                         ->tel()

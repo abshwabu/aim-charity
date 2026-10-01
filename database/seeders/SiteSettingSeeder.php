@@ -38,6 +38,7 @@ class SiteSettingSeeder extends Seeder
                 ],
                 'contact' => [
                     'email' => 'contact@aimcharity.org',
+                    'notification_email' => 'notifications@aimcharity.org',
                     'phone' => '+251 11 123 4567',
                     'address' => 'Bole Sub-City, Addis Ababa, Ethiopia',
                     'map_embed_url' => 'https://maps.google.com/?q=Addis+Ababa',
@@ -67,6 +68,9 @@ class SiteSettingSeeder extends Seeder
                 'footer' => [
                     'nav_heading' => 'Navigation',
                     'contact_heading' => 'Contact',
+                    'newsletter_heading' => 'Newsletter Updates',
+                    'newsletter_placeholder' => 'Enter your email address',
+                    'newsletter_button' => 'Subscribe',
                     'about_blurb' => 'Aim Charity is a coalition ("a group of groups") of grassroots community organizations in Ethiopia that came together to help people in need with dignity, solidarity, and transparency.',
                     'copyright_text' => '© {year} Aim Charity Coalition. All rights reserved.',
                     'legal_links' => [
