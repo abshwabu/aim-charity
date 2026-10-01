@@ -196,3 +196,67 @@ Check code standards with Laravel Pint:
 
 1. **Database-Driven Content**: No landing page text, copy, image paths, links, or theme colors are hardcoded. Everything is stored in and retrieved from the database.
 2. **Code Standards**: Strict typing (`declare(strict_types=1);`), PSR-12 standards, and Laravel conventions.
+
+---
+
+## Operations & Production Maintenance
+
+### 1. Storage & Media Backups
+User-uploaded media (logos, gallery images, member photos) are stored on the `public` disk under `storage/app/public`.
+
+- **Backup Media**:
+  ```bash
+  tar -czf aim_storage_backup_$(date +%F).tar.gz storage/app/public
+  ```
+- **Backup PostgreSQL Database**:
+  ```bash
+  pg_dump -U postgres -h 127.0.0.1 -d aim_charity -F c -b -v -f aim_db_backup_$(date +%F).dump
+  ```
+- **Restore Media**:
+  ```bash
+  tar -xzf aim_storage_backup_YYYY-MM-DD.tar.gz -C ./
+  php artisan storage:link
+  ```
+
+### 2. Background Queue Worker
+Incoming contact and volunteer application notification emails are queued asynchronously via Laravel queues.
+
+- **Run Worker Locally**:
+  ```bash
+  php artisan queue:work --tries=3 --timeout=90
+  ```
+- **Production Supervisor Configuration** (`/etc/supervisor/conf.d/aim-worker.conf`):
+  ```ini
+  [program:aim-worker]
+  process_name=%(program_name)s_%(process_num)02d
+  command=php /var/www/aim_charity/artisan queue:work --sleep=3 --tries=3 --max-time=3600
+  autostart=true
+  autorestart=true
+  user=www-data
+  numprocs=2
+  redirect_stderr=true
+  stdout_logfile=/var/log/supervisor/aim-worker.log
+  stopwaitsecs=3600
+  ```
+
+### 3. Task Scheduler Cron
+To run scheduled maintenance and queued recurring tasks, configure the standard Laravel crontab:
+
+```bash
+* * * * * cd /var/www/aim_charity && php artisan schedule:run >> /dev/null 2>&1
+```
+
+### 4. Cache Management & Clearing
+The platform caches site settings, sections, and items. When updates occur in Filament, caches flush automatically. For manual flushing or deployments:
+
+```bash
+# Flush site content cache (triggers re-querying and warm caching on next visit)
+php artisan tinker --execute 'App\Support\Site::flushCache();'
+
+# Clear application framework caches (routes, views, config)
+php artisan optimize:clear
+
+# Warm route and config caches for production
+php artisan optimize
+```
+

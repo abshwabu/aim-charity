@@ -43,6 +43,7 @@
                     <h3>
                         <button
                             type="button"
+                            id="faq-btn-{{ $faq->id }}"
                             @click="activeFaq = (activeFaq === {{ $faq->id }} ? null : {{ $faq->id }})"
                             :aria-expanded="activeFaq === {{ $faq->id }} ? 'true' : 'false'"
                             aria-controls="faq-panel-{{ $faq->id }}"
@@ -61,6 +62,8 @@
 
                     <div
                         id="faq-panel-{{ $faq->id }}"
+                        role="region"
+                        aria-labelledby="faq-btn-{{ $faq->id }}"
                         x-show="activeFaq === {{ $faq->id }}"
                         x-cloak
                         class="px-5 pb-5 sm:px-6 sm:pb-6 text-sm sm:text-base text-text-muted leading-relaxed font-normal border-t border-border/60 pt-4"

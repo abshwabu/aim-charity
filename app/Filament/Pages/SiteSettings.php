@@ -260,6 +260,7 @@ class SiteSettings extends Page
                         ->image()
                         ->imageEditor()
                         ->maxSize(5120)
+                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml'])
                         ->nullable()
                         ->helperText('Primary logo displayed over white or light header and page backgrounds.'),
 
@@ -270,6 +271,7 @@ class SiteSettings extends Page
                         ->image()
                         ->imageEditor()
                         ->maxSize(5120)
+                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml'])
                         ->nullable()
                         ->helperText('Inverted / light-colored logo displayed over dark header backgrounds and dark sections.'),
                 ]),
@@ -282,6 +284,7 @@ class SiteSettings extends Page
                         ->image()
                         ->imageEditor()
                         ->maxSize(5120)
+                        ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp', 'image/svg+xml'])
                         ->nullable()
                         ->helperText('Logo displayed specifically in the bottom footer column.'),
 
@@ -652,6 +655,7 @@ class SiteSettings extends Page
                     ->image()
                     ->imageEditor()
                     ->maxSize(5120)
+                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                     ->nullable()
                     ->helperText('Preview thumbnail image displayed when sharing the site URL on social platforms (1200x630 recommended).'),
 

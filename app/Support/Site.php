@@ -33,16 +33,21 @@ class Site
     /**
      * Retrieve the singleton site settings, cached indefinitely.
      */
+    /**
+     * Retrieve the singleton site settings, cached indefinitely.
+     */
     public static function settings(): SiteSetting
     {
+        class_exists(SiteSetting::class);
+
         try {
             $cached = Cache::get(self::CACHE_SETTINGS_KEY);
 
-            if ($cached instanceof SiteSetting) {
+            if ($cached instanceof SiteSetting && ! ($cached instanceof \__PHP_Incomplete_Class)) {
                 return $cached;
             }
         } catch (Throwable) {
-            // Cache corrupted or deserialization issue
+            Cache::forget(self::CACHE_SETTINGS_KEY);
         }
 
         $settings = SiteSetting::current();
@@ -63,14 +68,17 @@ class Site
      */
     public static function sections(): Collection
     {
+        class_exists(PageSection::class);
+        class_exists(Collection::class);
+
         try {
             $cached = Cache::get(self::CACHE_SECTIONS_KEY);
 
-            if ($cached instanceof Collection) {
+            if ($cached instanceof Collection && ! ($cached instanceof \__PHP_Incomplete_Class)) {
                 return $cached;
             }
         } catch (Throwable) {
-            // Cache corrupted or deserialization issue
+            Cache::forget(self::CACHE_SECTIONS_KEY);
         }
 
         try {
@@ -135,14 +143,37 @@ class Site
      */
     public static function items(): array
     {
+        class_exists(Collection::class);
+        class_exists(MemberGroup::class);
+        class_exists(Program::class);
+        class_exists(ImpactStat::class);
+        class_exists(Step::class);
+        class_exists(Testimonial::class);
+        class_exists(GalleryItem::class);
+        class_exists(NewsPost::class);
+        class_exists(DonationMethod::class);
+        class_exists(Partner::class);
+        class_exists(Faq::class);
+        class_exists(TeamMember::class);
+
         try {
             $cached = Cache::get(self::CACHE_ITEMS_KEY);
 
             if (is_array($cached)) {
-                return $cached;
+                $hasIncomplete = false;
+                foreach ($cached as $entry) {
+                    if ($entry instanceof \__PHP_Incomplete_Class || ! ($entry instanceof Collection)) {
+                        $hasIncomplete = true;
+                        break;
+                    }
+                }
+
+                if (! $hasIncomplete) {
+                    return $cached;
+                }
             }
         } catch (Throwable) {
-            // Cache corrupted or deserialization issue
+            Cache::forget(self::CACHE_ITEMS_KEY);
         }
 
         try {

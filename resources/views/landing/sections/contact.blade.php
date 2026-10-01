@@ -95,6 +95,7 @@
                         <div class="overflow-hidden rounded-theme border border-border aspect-video shadow-sm">
                             <iframe
                                 src="{{ $contactInfo['map_embed_url'] }}"
+                                title="Aim Charity Office Location Map"
                                 width="100%"
                                 height="100%"
                                 style="border:0;"

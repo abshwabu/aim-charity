@@ -2,6 +2,10 @@
     :settings="$settings"
     :title="$post->title"
     :description="$post->excerpt"
+    :post="$post"
+    :og-image="filled($post->cover_image) ? \App\Support\Site::imageUrl($post->cover_image) : null"
+    :canonical="route('news.show', $post->slug)"
+    og-type="article"
 >
     <article class="py-12 md:py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {{-- Back Navigation --}}

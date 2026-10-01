@@ -4,6 +4,8 @@
     'description' => null,
     'canonical' => null,
     'ogImage' => null,
+    'ogType' => null,
+    'post' => null,
 ])
 
 @php
@@ -48,6 +50,16 @@
     $twitterHandle = $seo['twitter_handle'] ?? null;
     $resolvedOgImage = $ogImage ?? (filled($seo['og_image'] ?? null) ? Site::imageUrl($seo['og_image']) : null);
     $faviconUrl = filled($branding['favicon'] ?? null) ? Site::imageUrl($branding['favicon']) : asset('favicon.ico');
+    $resolvedOgType = $ogType ?? ($post !== null ? 'article' : 'website');
+
+    // Preload Hero Image (LCP Optimization)
+    $heroSection = Site::section('hero');
+    $heroContent = is_array($heroSection->content) ? $heroSection->content : [];
+    $heroStyle = is_array($heroSection->style) ? $heroSection->style : [];
+    $heroCollage = is_array($heroContent['collage_images'] ?? null) ? $heroContent['collage_images'] : [];
+    $firstHeroImage = ! empty($heroCollage) && filled($heroCollage[0]) ? Site::imageUrl($heroCollage[0]) : null;
+    $heroBgImage = filled($heroStyle['background_image'] ?? null) ? Site::imageUrl($heroStyle['background_image']) : null;
+    $preloadHeroImage = $heroBgImage ?? $firstHeroImage;
 
     // Logo Resolution
     $logoLight = filled($branding['logo_light'] ?? null) ? Site::imageUrl($branding['logo_light']) : null;
@@ -97,7 +109,7 @@
     <link rel="canonical" href="{{ $canonicalUrl }}">
 
     {{-- Open Graph / Facebook --}}
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="{{ $resolvedOgType }}">
     <meta property="og:url" content="{{ $canonicalUrl }}">
     <meta property="og:title" content="{{ $pageTitle }}">
     @if(filled($metaDescription))
@@ -131,6 +143,14 @@
         <link href="{{ $googleFontsUrl }}" rel="stylesheet">
     @endif
 
+    {{-- Preload Hero Image (LCP Optimization) --}}
+    @if(filled($preloadHeroImage))
+        <link rel="preload" as="image" href="{{ $preloadHeroImage }}" fetchpriority="high">
+    @endif
+
+    {{-- Structured Data (JSON-LD) --}}
+    <x-seo-structured-data :settings="$settings" :post="$post" />
+
     {{-- Injected Dynamic Theme CSS Variables --}}
     <style>
         :root {
@@ -138,6 +158,7 @@
             --color-primary-hover: {{ $primaryHover }};
             --color-secondary: {{ $secondary }};
             --color-accent: {{ $accent }};
+            --color-accent-text: {{ ColorHelper::adjustBrightness($accent, -30) }};
             --color-background: {{ $background }};
             --color-surface: {{ $surface }};
             --color-text: {{ $text }};
@@ -146,6 +167,10 @@
             --radius: {{ $radiusValue }};
             --font-heading: '{{ $headingFont }}', Georgia, serif;
             --font-body: '{{ $bodyFont }}', ui-sans-serif, system-ui, sans-serif;
+        }
+
+        .text-accent {
+            color: var(--color-accent-text, #92400e);
         }
     </style>
 

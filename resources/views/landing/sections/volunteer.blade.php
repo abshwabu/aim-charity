@@ -164,14 +164,13 @@
                     {{-- Preferred Member Group Select --}}
                     @if($memberGroups->count() > 0)
                         <div class="flex flex-col gap-2">
-                            @if(filled($labels['group_label'] ?? $labels['member_group'] ?? null))
-                                <label for="vol-group" class="text-xs font-semibold tracking-wider uppercase text-text/80">
-                                    {{ $labels['group_label'] ?? $labels['member_group'] }}
-                                </label>
-                            @endif
+                            <label for="vol-group" class="text-xs font-semibold tracking-wider uppercase text-text/80">
+                                {{ $labels['group_label'] ?? ($labels['member_group'] ?? ($labels['organization'] ?? '')) }}
+                            </label>
                             <select
                                 id="vol-group"
                                 name="member_group_id"
+                                aria-label="{{ $labels['group_label'] ?? ($labels['member_group'] ?? 'Preferred Member Group') }}"
                                 class="w-full px-4 py-3 rounded-theme bg-background border border-border text-text focus:outline-none focus:ring-2 focus:ring-primary text-sm"
                             >
                                 <option value="">{{ $labels['all_groups'] ?? '' }}</option>

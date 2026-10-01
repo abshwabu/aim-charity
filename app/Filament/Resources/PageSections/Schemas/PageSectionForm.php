@@ -135,6 +135,7 @@ class PageSectionForm
                                             ->image()
                                             ->imageEditor()
                                             ->maxSize(5120)
+                                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
                                             ->visible(fn (Get $get): bool => $get('style.background_type') === 'image')
                                             ->helperText('Full-width image for section background.'),
 

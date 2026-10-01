@@ -105,6 +105,7 @@
                         class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 lg:p-8"
                         role="dialog"
                         aria-modal="true"
+                        aria-labelledby="modal-group-title-{{ $group->id }}"
                     >
                         {{-- Backdrop --}}
                         <div
@@ -152,7 +153,7 @@
 
                             {{-- Heading & Year --}}
                             <div class="flex flex-col gap-2">
-                                <h3 class="font-heading text-2xl sm:text-3xl font-normal text-text">
+                                <h3 id="modal-group-title-{{ $group->id }}" class="font-heading text-2xl sm:text-3xl font-normal text-text">
                                     {{ $group->name }}
                                 </h3>
                                 @if(filled($group->founded_year))
