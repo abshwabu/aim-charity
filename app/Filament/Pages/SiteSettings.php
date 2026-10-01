@@ -49,10 +49,11 @@ class SiteSettings extends Page
      * @var array<string, string>
      */
     public const GOOGLE_FONTS = [
+        'Fraunces' => 'Fraunces (Warm Editorial Serif)',
+        'Plus Jakarta Sans' => 'Plus Jakarta Sans (Contemporary Clean)',
         'Instrument Sans' => 'Instrument Sans (Default Clean)',
         'Inter' => 'Inter (Modern Sans)',
         'Poppins' => 'Poppins (Geometric & Friendly)',
-        'Plus Jakarta Sans' => 'Plus Jakarta Sans (Contemporary)',
         'Montserrat' => 'Montserrat (Editorial & Bold)',
         'Open Sans' => 'Open Sans (Neutral & Legible)',
         'Roboto' => 'Roboto (Classic Sans)',

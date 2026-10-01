@@ -26,14 +26,15 @@ class SiteSettingSeeder extends Seeder
                     'footer_logo' => null,
                 ],
                 'theme' => [
-                    'primary' => '#059669',
-                    'secondary' => '#0d9488',
-                    'accent' => '#f59e0b',
-                    'background' => '#f8fafc',
-                    'text' => '#0f172a',
-                    'heading_font' => 'Instrument Sans',
-                    'body_font' => 'Instrument Sans',
-                    'radius_style' => 'rounded-xl',
+                    'primary' => '#1b4332',
+                    'secondary' => '#2d6a4f',
+                    'accent' => '#d97706',
+                    'background' => '#fbf9f5',
+                    'surface' => '#ffffff',
+                    'text' => '#1c1917',
+                    'heading_font' => 'Fraunces',
+                    'body_font' => 'Plus Jakarta Sans',
+                    'radius_style' => 'rounded-2xl',
                 ],
                 'contact' => [
                     'email' => 'contact@aimcharity.org',
@@ -65,7 +66,7 @@ class SiteSettingSeeder extends Seeder
                 ],
                 'footer' => [
                     'about_blurb' => 'Aim Charity is a coalition ("a group of groups") of grassroots community organizations in Ethiopia that came together to help people in need with dignity, solidarity, and transparency.',
-                    'copyright_text' => 'Aim Charity Coalition. All rights reserved.',
+                    'copyright_text' => '© {year} Aim Charity Coalition. All rights reserved.',
                     'legal_links' => [
                         ['label' => 'Privacy Policy', 'url' => '#'],
                         ['label' => 'Terms of Use', 'url' => '#'],

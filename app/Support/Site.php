@@ -22,9 +22,25 @@ class Site
      */
     public static function settings(): SiteSetting
     {
-        return Cache::rememberForever(self::CACHE_SETTINGS_KEY, function (): SiteSetting {
-            return SiteSetting::current();
-        });
+        try {
+            $cached = Cache::get(self::CACHE_SETTINGS_KEY);
+
+            if ($cached instanceof SiteSetting) {
+                return $cached;
+            }
+        } catch (Throwable) {
+            // Cache corrupted or deserialization issue
+        }
+
+        $settings = SiteSetting::current();
+
+        try {
+            Cache::forever(self::CACHE_SETTINGS_KEY, $settings);
+        } catch (Throwable) {
+            // Ignore cache storage failure
+        }
+
+        return $settings;
     }
 
     /**
@@ -34,17 +50,33 @@ class Site
      */
     public static function sections(): Collection
     {
-        return Cache::rememberForever(self::CACHE_SECTIONS_KEY, function (): Collection {
-            try {
-                return PageSection::query()
-                    ->visible()
-                    ->ordered()
-                    ->get()
-                    ->keyBy('key');
-            } catch (Throwable) {
-                return collect();
+        try {
+            $cached = Cache::get(self::CACHE_SECTIONS_KEY);
+
+            if ($cached instanceof Collection) {
+                return $cached;
             }
-        });
+        } catch (Throwable) {
+            // Cache corrupted or deserialization issue
+        }
+
+        try {
+            $sections = PageSection::query()
+                ->visible()
+                ->ordered()
+                ->get()
+                ->keyBy('key');
+        } catch (Throwable) {
+            $sections = collect();
+        }
+
+        try {
+            Cache::forever(self::CACHE_SECTIONS_KEY, $sections);
+        } catch (Throwable) {
+            // Ignore cache storage failure
+        }
+
+        return $sections;
     }
 
     /**

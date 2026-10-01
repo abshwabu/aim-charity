@@ -74,14 +74,15 @@ class SiteSetting extends Model
                 'footer_logo' => null,
             ],
             'theme' => [
-                'primary' => '#059669',
-                'secondary' => '#0d9488',
-                'accent' => '#f59e0b',
-                'background' => '#f8fafc',
-                'text' => '#0f172a',
-                'heading_font' => 'Instrument Sans',
-                'body_font' => 'Instrument Sans',
-                'radius_style' => 'rounded-xl',
+                'primary' => '#1b4332',
+                'secondary' => '#2d6a4f',
+                'accent' => '#d97706',
+                'background' => '#fbf9f5',
+                'surface' => '#ffffff',
+                'text' => '#1c1917',
+                'heading_font' => 'Fraunces',
+                'body_font' => 'Plus Jakarta Sans',
+                'radius_style' => 'rounded-2xl',
             ],
             'contact' => [
                 'email' => 'contact@aimcharity.org',
@@ -101,7 +102,7 @@ class SiteSetting extends Model
             ],
             'footer' => [
                 'about_blurb' => 'Aim Charity is a coalition of grassroots organizations dedicated to mutual aid and community resilience across Ethiopia.',
-                'copyright_text' => 'Aim Charity. All rights reserved.',
+                'copyright_text' => '© {year} Aim Charity. All rights reserved.',
                 'legal_links' => [],
             ],
         ]);
