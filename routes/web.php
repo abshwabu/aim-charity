@@ -2,17 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Support\Site;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    $settings = Site::settings();
-    $sections = Site::sections();
-    $hero = Site::section('hero');
-
-    return view('landing.index', [
-        'settings' => $settings,
-        'sections' => $sections,
-        'hero' => $hero,
-    ]);
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/news/{slug}', [HomeController::class, 'showNews'])->name('news.show');

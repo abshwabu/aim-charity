@@ -4,8 +4,19 @@ declare(strict_types=1);
 
 namespace App\Support;
 
+use App\Models\DonationMethod;
+use App\Models\Faq;
+use App\Models\GalleryItem;
+use App\Models\ImpactStat;
+use App\Models\MemberGroup;
+use App\Models\NewsPost;
 use App\Models\PageSection;
+use App\Models\Partner;
+use App\Models\Program;
 use App\Models\SiteSetting;
+use App\Models\Step;
+use App\Models\TeamMember;
+use App\Models\Testimonial;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
@@ -16,6 +27,8 @@ class Site
     public const CACHE_SETTINGS_KEY = 'site:settings';
 
     public const CACHE_SECTIONS_KEY = 'site:sections';
+
+    public const CACHE_ITEMS_KEY = 'site:items';
 
     /**
      * Retrieve the singleton site settings, cached indefinitely.
@@ -116,12 +129,57 @@ class Site
     }
 
     /**
-     * Flush all cached site settings and sections.
+     * Retrieve all visible repeatable items bundled by section key, cached.
+     *
+     * @return array<string, Collection>
+     */
+    public static function items(): array
+    {
+        try {
+            $cached = Cache::get(self::CACHE_ITEMS_KEY);
+
+            if (is_array($cached)) {
+                return $cached;
+            }
+        } catch (Throwable) {
+            // Cache corrupted or deserialization issue
+        }
+
+        try {
+            $items = [
+                'member_groups' => MemberGroup::query()->visible()->ordered()->get(),
+                'programs' => Program::query()->visible()->ordered()->get(),
+                'impact_stats' => ImpactStat::query()->visible()->ordered()->get(),
+                'how_it_works' => Step::query()->visible()->ordered()->get(),
+                'testimonials' => Testimonial::query()->with('memberGroup')->visible()->ordered()->get(),
+                'gallery' => GalleryItem::query()->with('memberGroup')->visible()->ordered()->get(),
+                'news' => NewsPost::query()->visible()->ordered()->latest('published_at')->get(),
+                'donate' => DonationMethod::query()->visible()->ordered()->get(),
+                'partners' => Partner::query()->visible()->ordered()->get(),
+                'faq' => Faq::query()->visible()->ordered()->get(),
+                'team' => TeamMember::query()->with('memberGroup')->visible()->ordered()->get(),
+            ];
+        } catch (Throwable) {
+            $items = [];
+        }
+
+        try {
+            Cache::forever(self::CACHE_ITEMS_KEY, $items);
+        } catch (Throwable) {
+            // Ignore cache storage failure
+        }
+
+        return $items;
+    }
+
+    /**
+     * Flush all cached site settings, sections, and items.
      */
     public static function flushCache(): void
     {
         Cache::forget(self::CACHE_SETTINGS_KEY);
         Cache::forget(self::CACHE_SECTIONS_KEY);
+        Cache::forget(self::CACHE_ITEMS_KEY);
     }
 
     /**

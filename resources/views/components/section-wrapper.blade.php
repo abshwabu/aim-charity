@@ -23,7 +23,7 @@
     $resolvedBgImage = $backgroundImage ?? $style['background_image'] ?? null;
     $resolvedOverlay = $backgroundOverlay ?? $style['background_overlay'] ?? null;
     $resolvedTextTheme = $textTheme ?? $style['text_theme'] ?? null;
-    $resolvedPadding = $paddingSize ?? $style['padding_size'] ?? 'default';
+    $resolvedPadding = $paddingSize ?? $style['padding_size'] ?? $style['vertical_padding'] ?? 'default';
 
     // Auto-detect dark/light theme if not explicitly forced
     if (empty($resolvedTextTheme) && filled($resolvedBgColor)) {
@@ -32,12 +32,12 @@
 
     $isDarkTheme = ($resolvedTextTheme === 'dark');
 
-    $paddingClasses = match ($resolvedPadding) {
+    $paddingClasses = match (strtolower((string) $resolvedPadding)) {
         'none' => 'py-0',
-        'S', 'sm' => 'py-10 md:py-14',
-        'L', 'lg' => 'py-20 md:py-32',
-        'XL', 'xl' => 'py-24 md:py-40',
-        default => 'py-16 md:py-24', // M / default
+        's', 'sm' => 'py-10 md:py-14',
+        'l', 'lg' => 'py-20 md:py-32',
+        'xl' => 'py-24 md:py-40',
+        default => 'py-16 md:py-24', // m / default
     };
 
     $themeClasses = $isDarkTheme

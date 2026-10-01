@@ -392,9 +392,11 @@
                 {{-- Column 2: Navigation Links --}}
                 @if(count($menuLinks) > 0)
                     <div class="lg:col-span-3 flex flex-col gap-4">
-                        <span class="text-xs font-semibold tracking-wider uppercase text-text/90">
-                            Navigation
-                        </span>
+                        @if(filled($footer['nav_heading'] ?? null))
+                            <span class="text-xs font-semibold tracking-wider uppercase text-text/90">
+                                {{ $footer['nav_heading'] }}
+                            </span>
+                        @endif
                         <ul class="flex flex-col gap-2.5 text-sm text-text-muted" role="list">
                             @foreach($menuLinks as $link)
                                 @php
@@ -426,9 +428,11 @@
                 @endphp
                 @if($hasContact)
                     <div class="lg:col-span-4 flex flex-col gap-4">
-                        <span class="text-xs font-semibold tracking-wider uppercase text-text/90">
-                            Contact
-                        </span>
+                        @if(filled($footer['contact_heading'] ?? null))
+                            <span class="text-xs font-semibold tracking-wider uppercase text-text/90">
+                                {{ $footer['contact_heading'] }}
+                            </span>
+                        @endif
                         <ul class="flex flex-col gap-3 text-sm text-text-muted" role="list">
                             @if(filled($contact['address'] ?? null))
                                 <li class="flex items-start gap-2.5">

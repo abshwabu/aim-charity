@@ -65,6 +65,8 @@ class SiteSettingSeeder extends Seeder
                     'analytics_snippet' => null,
                 ],
                 'footer' => [
+                    'nav_heading' => 'Navigation',
+                    'contact_heading' => 'Contact',
                     'about_blurb' => 'Aim Charity is a coalition ("a group of groups") of grassroots community organizations in Ethiopia that came together to help people in need with dignity, solidarity, and transparency.',
                     'copyright_text' => '© {year} Aim Charity Coalition. All rights reserved.',
                     'legal_links' => [
