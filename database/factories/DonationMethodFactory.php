@@ -24,7 +24,7 @@ class DonationMethodFactory extends Factory
         return [
             'label' => fake()->randomElement(['Commercial Bank of Ethiopia (CBE)', 'Telebirr', 'Bank of Abyssinia', 'Awash Bank']),
             'logo' => 'donations/'.fake()->uuid().'.webp',
-            'account_name' => 'Aim Charity Coalition',
+            'account_name' => 'Aim Charity Association',
             'account_number' => (string) fake()->numberBetween(1000000000, 9999999999),
             'instructions' => '<p>Please include your full name as reference.</p>',
             'qr_image' => 'donations/qr/'.fake()->uuid().'.webp',

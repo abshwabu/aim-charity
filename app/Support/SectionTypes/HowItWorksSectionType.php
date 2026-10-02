@@ -35,7 +35,7 @@ class HowItWorksSectionType extends BaseSectionType
             'layout' => 'steps',
             'items_count' => 4,
             'buttons' => [
-                ['label' => 'Join the Coalition', 'link_type' => 'section', 'target' => 'contact', 'url' => null, 'style' => 'primary'],
+                ['label' => 'Join Weekly Giving', 'link_type' => 'section', 'target' => 'donate', 'url' => null, 'style' => 'primary'],
             ],
         ];
     }
@@ -48,7 +48,7 @@ class HowItWorksSectionType extends BaseSectionType
                     Textarea::make('content.intro')
                         ->label('Section Intro Copy')
                         ->rows(2)
-                        ->placeholder('Intro text introducing how the coalition operates...'),
+                        ->placeholder('Intro text introducing how our 25 members operate...'),
 
                     Grid::make(2)->schema([
                         Select::make('content.layout')

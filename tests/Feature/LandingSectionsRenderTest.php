@@ -42,66 +42,66 @@ class LandingSectionsRenderTest extends TestCase
 
         // 1. Hero
         $response->assertSee('Started by Friends. Sustained by Weekly Kindness.');
-        $response->assertSee('120+');
+        $response->assertSee('25');
 
         // 2. About
         $response->assertSee('Our Story');
-        $response->assertSee('How a Group of Friends Started a Town Association');
+        $response->assertSee('How 25 Friends Started a Small-Town Association');
         $response->assertSee('Complete Openness');
 
-        // 3. Member Groups
-        $response->assertSee('Founding Friends Circle');
-        $response->assertSee('Town Youth Volunteers');
-        $response->assertSee('Neighborhood Mothers & Elders Circle');
+        // 3. Our Group
+        $response->assertSee('One Group of 25 Friends');
+        $response->assertSee('Aim Charity (25 Member Friends)');
 
         // 4. Programs
-        $response->assertSee('Weekly Elder Care & Food Baskets');
-        $response->assertSee('Back-to-School Supplies for Town Kids');
+        $response->assertSee('Food Support for Local Families & Elders');
+        $response->assertSee('Clothing, Blankets & Warmth Support');
 
-        // 5. Impact Stats
-        $response->assertSee('Contributing Friends & Neighbors');
+        // 4. Impact Stats
+        $response->assertSee('Member Friends in Our Group');
+        $response->assertSee('Town Families Supported with Food & Clothes');
         $response->assertSee('Direct to Neighbors (Zero Overhead)');
 
-        // 6. How It Works
-        $response->assertSee('Friends Pool Weekly Donations');
+        // 5. How It Works
+        $response->assertSee('25 Friends Pool Weekly Donations');
         $response->assertSee('Personal Neighbor Visits');
-        $response->assertSee('Handover with Open Books');
+        $response->assertSee('In-Person Handover with Open Receipts');
 
-        // 7. Testimonials
+        // 6. Testimonials
         $response->assertSee('Emaye Almaz Gebre');
         $response->assertSee('Teacher Solomon Haile');
 
-        // 8. Gallery
+        // 7. Gallery
         $response->assertSee('Volunteers packing weekly food care baskets at the town community center.');
 
-        // 9. Donate
+        // 8. Donate
         $response->assertSee('Commercial Bank of Ethiopia (CBE)');
         $response->assertSee('1000-0000-0000-0000');
         $response->assertSee('Telebirr Mobile Money');
 
-        // 10. Volunteer
+        // 9. Volunteer
         $response->assertSee('Full Name');
         $response->assertSee('Submit Volunteer Application');
 
-        // 11. Contact
+        // 10. Contact
         $response->assertSee('Your Full Name');
         $response->assertSee('Send Message');
 
-        // 12. Partners
+        // 11. Partners
         $response->assertSee('Town Community Elders Council');
         $response->assertSee('Local Kebele Health Post');
 
-        // 13. News
-        $response->assertSee('Celebrating Our 50th Consecutive Weekly Food Basket Delivery');
+        // 12. News
+        $response->assertSee('Delivered Weekly Food Baskets to 42 Town Elder Households');
 
-        // 14. FAQ
+        // 13. FAQ
         $response->assertSee('What is Aim Charity and how did it start?');
 
-        // 15. Team
+        // 14. Team
         $response->assertSee('Dawit Mekonnen');
-        $response->assertSee('Founding Friend & Coordinator');
+        $response->assertSee('Founding Friend & Food Logistics');
 
-        // 16. CTA Banner
+        // 15. CTA Banner
         $response->assertSee('Small Town, Big Heart. Stand With Our Neighbors.');
         $response->assertSee('Start Weekly Giving');
     }
@@ -110,7 +110,7 @@ class LandingSectionsRenderTest extends TestCase
     {
         // Programs are visible initially
         $response = $this->get('/');
-        $response->assertSee('Weekly Elder Care & Food Baskets');
+        $response->assertSee('Food Support for Local Families & Elders');
 
         // Hide programs section in DB and flush cache (simulating Filament save)
         PageSection::query()->where('key', 'programs')->update(['is_visible' => false]);
@@ -129,7 +129,7 @@ class LandingSectionsRenderTest extends TestCase
         $response = $this->get('/');
         $response->assertOk();
         $response->assertDontSee('id="programs"', false);
-        $response->assertDontSee('Weekly Elder Care & Food Baskets');
+        $response->assertDontSee('Food Support for Local Families & Elders');
     }
 
     public function test_news_detail_route_renders_post_by_slug(): void
@@ -141,7 +141,7 @@ class LandingSectionsRenderTest extends TestCase
         $response->assertOk();
         $response->assertSee($post->title);
         $response->assertSee($post->excerpt);
-        $response->assertSee('consecutive weeks of food basket deliveries', false);
+        $response->assertSee('teff flour, cooking oil, lentils', false);
     }
 
     public function test_news_detail_route_returns_404_for_invalid_slug(): void

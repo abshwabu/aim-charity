@@ -162,7 +162,7 @@
                     @endif
 
                     {{-- Preferred Member Group Select --}}
-                    @if($memberGroups->count() > 0)
+                    @if($memberGroups->count() > 1)
                         <div class="flex flex-col gap-2">
                             <label for="vol-group" class="text-xs font-semibold tracking-wider uppercase text-text/80">
                                 {{ $labels['group_label'] ?? ($labels['member_group'] ?? ($labels['organization'] ?? '')) }}
@@ -179,6 +179,8 @@
                                 @endforeach
                             </select>
                         </div>
+                    @elseif($memberGroups->count() === 1)
+                        <input type="hidden" name="member_group_id" value="{{ $memberGroups->first()->id }}" />
                     @endif
                 </div>
 

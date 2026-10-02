@@ -19,7 +19,7 @@ class SiteSettingSeeder extends Seeder
             [
                 'branding' => [
                     'site_name' => 'Aim Charity',
-                    'tagline' => 'Small-Town Charity Association Started by Friends',
+                    'tagline' => 'Small-Town Charity Association of 25 Friends — Weekly Food, Clothes & Local Aid',
                     'logo_light' => 'branding/logo-light.svg',
                     'logo_dark' => 'branding/logo-dark.svg',
                     'favicon' => 'branding/favicon.svg',
@@ -51,7 +51,6 @@ class SiteSettingSeeder extends Seeder
                 ],
                 'navigation' => [
                     ['label' => 'Our Story', 'target' => 'section', 'section_key' => 'about', 'open_in_new_tab' => false],
-                    ['label' => 'Giving Circles', 'target' => 'section', 'section_key' => 'member_groups', 'open_in_new_tab' => false],
                     ['label' => 'Programs', 'target' => 'section', 'section_key' => 'programs', 'open_in_new_tab' => false],
                     ['label' => 'Impact', 'target' => 'section', 'section_key' => 'impact_stats', 'open_in_new_tab' => false],
                     ['label' => 'How It Works', 'target' => 'section', 'section_key' => 'how_it_works', 'open_in_new_tab' => false],
@@ -59,8 +58,8 @@ class SiteSettingSeeder extends Seeder
                     ['label' => 'Contact', 'target' => 'section', 'section_key' => 'contact', 'open_in_new_tab' => false],
                 ],
                 'seo' => [
-                    'meta_title' => 'Aim Charity — Small-Town Charity Association Started by Friends',
-                    'meta_description' => 'Aim Charity is a small-town charity association started by a group of close friends in Ethiopia. Through weekly donations, we care for elderly neighbors, support local families, and keep kids in school.',
+                    'meta_title' => 'Aim Charity — Small-Town Charity Association of 25 Friends',
+                    'meta_description' => 'Aim Charity is a small-town charity association of 25 close friends in Ethiopia. Through weekly pooled donations, we provide food, warm clothing, and direct emergency assistance to local neighbors in need.',
                     'og_image' => 'branding/logo-dark.svg',
                     'twitter_handle' => '@aimcharity',
                     'analytics_snippet' => null,
@@ -71,8 +70,8 @@ class SiteSettingSeeder extends Seeder
                     'newsletter_heading' => 'Weekly Updates',
                     'newsletter_placeholder' => 'Enter your email address',
                     'newsletter_button' => 'Stay Updated',
-                    'about_blurb' => 'Aim Charity was started by a group of friends in our small town to support elderly neighbors, struggling families, and local school children through weekly community donations. 100% direct, zero overhead.',
-                    'copyright_text' => '© {year} Aim Charity Association. Started by friends for our town. All rights reserved.',
+                    'about_blurb' => 'Aim Charity is a single small-town charity association of 25 close friends. We pool weekly donations to buy food, warm clothes, and emergency supplies directly for elderly and vulnerable neighbors in our town with 100% direct giving and zero overhead.',
+                    'copyright_text' => '© {year} Aim Charity Association. Started by 25 friends for our town. All rights reserved.',
                     'legal_links' => [
                         ['label' => 'Privacy Policy', 'url' => '#'],
                         ['label' => 'Weekly Giving Transparency', 'url' => '#'],

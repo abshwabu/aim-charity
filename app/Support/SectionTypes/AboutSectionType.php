@@ -32,10 +32,10 @@ class AboutSectionType extends BaseSectionType
     public static function getDefaultContent(): array
     {
         return [
-            'coalition_explainer' => 'Aim Charity was started by a group of close friends in our small town. We pool weekly donations to care for elderly neighbors, support local families, and keep children in school — 100% direct with zero overhead.',
+            'coalition_explainer' => 'Aim Charity was started by 25 close friends in our small town. We pool weekly donations to care for elderly neighbors, provide food and clothes, and support local needs — 100% direct with zero overhead.',
             'mission' => 'To care for vulnerable neighbors in our town through consistent weekly giving, personal visits, and community solidarity.',
-            'vision' => 'A town where no elder goes hungry, no child leaves school for lack of supplies, and neighbors always support each other in times of need.',
-            'story' => '<p>Started by a close group of childhood friends around a coffee table, Aim Charity is a small-town charity association powered by weekly donations. We pool small contributions each week to directly support neighbors in need with complete openness and personal care.</p>',
+            'vision' => 'A town where no elder goes hungry, no child lacks warm clothes or school supplies, and neighbors always support each other.',
+            'story' => '<p>Started by 25 close childhood friends around a coffee table, Aim Charity is a small-town charity association powered by weekly donations. We pool small contributions each week to directly support neighbors in need with complete openness and personal care.</p>',
             'images' => [],
             'values' => [
                 ['icon' => 'heroicon-o-heart', 'title' => 'Weekly Direct Care', 'text' => 'Small consistent weekly gifts deliver direct food, medical care, and dignity.'],
@@ -43,7 +43,7 @@ class AboutSectionType extends BaseSectionType
                 ['icon' => 'heroicon-o-user-group', 'title' => 'Neighborly Solidarity', 'text' => 'Friends and community members looking after each other as family.'],
             ],
             'buttons' => [
-                ['label' => 'Learn About Our Giving Circles', 'link_type' => 'section', 'target' => 'member_groups', 'url' => null, 'style' => 'primary'],
+                ['label' => 'See What We Do', 'link_type' => 'section', 'target' => 'programs', 'url' => null, 'style' => 'primary'],
             ],
         ];
     }
@@ -58,11 +58,11 @@ class AboutSectionType extends BaseSectionType
                         ->label('Association Story & Giving Model')
                         ->rows(3)
                         ->placeholder('Explain how Aim Charity operates as a small-town charity started by friends...')
-                        ->helperText('Explains the unique collaborative model uniting grassroots groups in Ethiopia.'),
+                        ->helperText('Explains our small-town charity association model of 25 friends.'),
 
                     RichEditor::make('content.story')
-                        ->label('Coalition Origin & Narrative Story')
-                        ->helperText('Detailed background story on how and why the coalition was founded.'),
+                        ->label('Association Origin & Story')
+                        ->helperText('Detailed background story on how our 25 members started giving together.'),
 
                     FileUpload::make('content.images')
                         ->label('About Showcase Photos')
@@ -73,7 +73,7 @@ class AboutSectionType extends BaseSectionType
                         ->multiple()
                         ->maxFiles(6)
                         ->maxSize(5120)
-                        ->helperText('Photographs illustrating coalition field work and volunteer assemblies.'),
+                        ->helperText('Photographs illustrating town food and clothing distributions.'),
                 ]),
 
             Section::make('Mission & Vision')
@@ -83,18 +83,18 @@ class AboutSectionType extends BaseSectionType
                             ->label('Mission Statement')
                             ->rows(3)
                             ->placeholder('Our mission is to...')
-                            ->helperText('Concise statement of the coalition purpose.'),
+                            ->helperText('Concise statement of our 25 members purpose.'),
 
                         Textarea::make('content.vision')
                             ->label('Vision Statement')
                             ->rows(3)
-                            ->placeholder('Our vision is an Ethiopia where...')
-                            ->helperText('Long-term aspiration for the communities we serve.'),
+                            ->placeholder('Our vision is a town where...')
+                            ->helperText('Long-term aspiration for our town neighbors.'),
                     ]),
                 ]),
 
             Section::make('Core Values')
-                ->description('List the ethical principles guiding all coalition members.')
+                ->description('List the ethical principles guiding our 25 members.')
                 ->schema([
                     Repeater::make('content.values')
                         ->label('Values')

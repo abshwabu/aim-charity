@@ -5,7 +5,7 @@
         </x-slot>
 
         <x-slot name="description">
-            Direct shortcuts to manage the town charity association and giving circles.
+            Direct shortcuts to manage our small-town charity association and local programs.
         </x-slot>
 
         <x-slot name="afterHeader">
@@ -37,7 +37,7 @@
                 </div>
             </a>
 
-            <!-- Add Giving Circle -->
+            <!-- Add Member Group -->
             <a
                 href="{{ $this->getAddMemberGroupUrl() }}"
                 class="group flex items-center gap-3.5 rounded-xl border border-gray-200/80 bg-white p-3.5 transition duration-150 ease-in-out hover:border-amber-500/50 hover:bg-amber-50/40 dark:border-white/10 dark:bg-white/[0.02] dark:hover:border-amber-500/40 dark:hover:bg-amber-500/10"
@@ -46,8 +46,8 @@
                     <x-filament::icon icon="heroicon-o-user-group" class="h-5 w-5" />
                 </div>
                 <div class="min-w-0 flex-1">
-                    <p class="text-sm font-semibold text-gray-950 transition duration-150 group-hover:text-amber-800 dark:text-white dark:group-hover:text-amber-300">Add Member Group (Giving Circle)</p>
-                    <p class="truncate text-xs text-gray-500 dark:text-gray-400">Register new friend circle or team</p>
+                    <p class="text-sm font-semibold text-gray-950 transition duration-150 group-hover:text-amber-800 dark:text-white dark:group-hover:text-amber-300">Add Member Group</p>
+                    <p class="truncate text-xs text-gray-500 dark:text-gray-400">Manage association membership</p>
                 </div>
             </a>
 

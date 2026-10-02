@@ -31,7 +31,7 @@ class ProgramsSectionType extends BaseSectionType
     public static function getDefaultContent(): array
     {
         return [
-            'intro' => 'Our coordinated community programs provide immediate emergency assistance, medical support, clean water access, and livelihood development.',
+            'intro' => 'Our local programs provide essential food packages, warm clothing, and direct local aid to elderly and vulnerable neighbors in our town.',
             'layout' => 'grid',
             'items_count' => 6,
             'buttons' => [
@@ -48,7 +48,7 @@ class ProgramsSectionType extends BaseSectionType
                     Textarea::make('content.intro')
                         ->label('Section Intro Copy')
                         ->rows(2)
-                        ->placeholder('Summary of the coalition key program pillars...'),
+                        ->placeholder('Summary of our local town program pillars (food, clothes, and local support)...'),
 
                     Grid::make(2)->schema([
                         Select::make('content.layout')

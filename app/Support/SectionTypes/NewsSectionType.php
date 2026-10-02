@@ -31,7 +31,7 @@ class NewsSectionType extends BaseSectionType
     public static function getDefaultContent(): array
     {
         return [
-            'intro' => 'Stay informed on recent coalition relief operations, financial accountability reports, and community developments.',
+            'intro' => 'Stay informed on our weekly town food and clothing distributions, financial transparency reports, and local neighbor stories.',
             'layout' => 'grid',
             'items_count' => 3,
             'buttons' => [

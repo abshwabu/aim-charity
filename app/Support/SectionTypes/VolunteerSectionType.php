@@ -29,7 +29,7 @@ class VolunteerSectionType extends BaseSectionType
     public static function getDefaultContent(): array
     {
         return [
-            'intro' => 'Join our active network of passionate volunteers. Whether you offer medical skills, logistics support, translation, or manual assistance, your effort makes a tangible difference.',
+            'intro' => 'Join our weekend volunteer packing and delivery rounds. Help our 25 members package weekly food baskets, sort clothing, or visit elderly neighbors.',
             'labels' => [
                 'name' => 'Full Name',
                 'email' => 'Email Address',
@@ -37,8 +37,8 @@ class VolunteerSectionType extends BaseSectionType
                 'skills' => 'Your Skills & Expertise',
                 'availability' => 'Availability (Hours / Days per week)',
                 'message' => 'Why do you want to volunteer with Aim Charity?',
-                'member_group' => 'Preferred Member Group',
-                'all_groups' => 'Any Group / General Coalition',
+                'member_group' => 'Preferred Activity / Team',
+                'all_groups' => 'Any Activity (Food Packing, Clothes, or Deliveries)',
             ],
             'button_label' => 'Submit Volunteer Application',
             'success_message' => 'Thank you for stepping up to help! Our volunteer coordinator will reach out to you within 48 hours.',

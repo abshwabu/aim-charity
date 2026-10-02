@@ -31,7 +31,7 @@ class ImpactStatsSectionType extends BaseSectionType
     public static function getDefaultContent(): array
     {
         return [
-            'intro' => 'Measurable impact delivered directly to communities across regional and urban Ethiopia through our united coalition.',
+            'intro' => 'Measurable impact delivered directly to elderly neighbors and families in our town through our single group of 25 members.',
             'layout' => 'grid',
             'items_count' => 4,
         ];

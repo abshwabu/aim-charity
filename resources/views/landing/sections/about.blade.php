@@ -10,7 +10,7 @@
     $eyebrow = $content['eyebrow'] ?? null;
     $heading = $content['heading'] ?? null;
     $subheading = $content['subheading'] ?? null;
-    $explainer = $content['coalition_explainer'] ?? null;
+    $explainer = $content['coalition_explainer'] ?? ($content['explainer'] ?? null);
     $story = $content['story'] ?? ($content['body'] ?? null);
     $mission = $content['mission'] ?? null;
     $vision = $content['vision'] ?? null;
@@ -69,55 +69,24 @@
                     @endif
                 </div>
 
-                {{-- Right Diagram: Member groups converging into one central circle --}}
+                {{-- Right Visual: Town Friends Community Motif --}}
                 <div class="lg:col-span-6 flex items-center justify-center py-6">
                     <div class="relative w-72 h-72 sm:w-80 sm:h-80 flex items-center justify-center" aria-hidden="true">
                         {{-- Outer Concentric Guide Ring --}}
                         <div class="absolute inset-0 rounded-full border border-dashed border-primary/25 animate-[spin_60s_linear_infinite]"></div>
-                        <div class="absolute inset-8 rounded-full border border-primary/15"></div>
+                        <div class="absolute inset-6 rounded-full border border-primary/15"></div>
 
-                        {{-- Central Coalition Circle --}}
-                        <div class="relative z-10 w-28 h-28 sm:w-32 sm:h-32 rounded-full bg-primary text-white flex flex-col items-center justify-center p-3 text-center shadow-lg ring-4 ring-primary/20">
-                            <svg class="w-8 h-8 text-accent mb-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                                <circle cx="12" cy="12" r="9" stroke="currentColor"/>
-                                <circle cx="9" cy="11" r="3.5" stroke="currentColor"/>
-                                <circle cx="15" cy="11" r="3.5" stroke="currentColor"/>
+                        {{-- Central Association Circle --}}
+                        <div class="relative z-10 w-36 h-36 sm:w-40 sm:h-40 rounded-full bg-primary text-white flex flex-col items-center justify-center p-4 text-center shadow-lg ring-4 ring-primary/20">
+                            <svg class="w-10 h-10 text-accent mb-1.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                             </svg>
                             @if(filled($settings?->branding['site_name'] ?? null))
-                                <span class="text-[11px] font-semibold tracking-tight uppercase leading-tight line-clamp-2">
+                                <span class="text-xs font-bold tracking-tight uppercase leading-tight line-clamp-2">
                                     {{ $settings->branding['site_name'] }}
                                 </span>
                             @endif
                         </div>
-
-                        {{-- Converging Member Orbit Nodes --}}
-                        @php
-                            $orbitCount = min(6, max(3, $memberGroups->count()));
-                            $sampleGroups = $memberGroups->take($orbitCount)->values();
-                        @endphp
-                        @foreach($sampleGroups as $idx => $mGroup)
-                            @php
-                                $angle = ($idx * (360 / $orbitCount)) * (M_PI / 180);
-                                $radius = 120; // px
-                                $x = cos($angle) * $radius;
-                                $y = sin($angle) * $radius;
-                            @endphp
-                            <div
-                                class="absolute z-20 flex items-center justify-center transition-transform hover:scale-110"
-                                style="transform: translate({{ $x }}px, {{ $y }}px);"
-                                title="{{ $mGroup->name }}"
-                            >
-                                <div class="w-12 h-12 rounded-full bg-surface border-2 border-accent/40 shadow-md flex items-center justify-center p-1.5 overflow-hidden ring-2 ring-accent/15">
-                                    @if(filled($mGroup->logo))
-                                        <x-image :src="$mGroup->logo" :alt="$mGroup->name" aspect="square" class="w-full h-full object-contain" />
-                                    @else
-                                        <span class="text-[10px] font-bold text-primary truncate">
-                                            {{ mb_substr($mGroup->name, 0, 2) }}
-                                        </span>
-                                    @endif
-                                </div>
-                            </div>
-                        @endforeach
                     </div>
                 </div>
             </div>

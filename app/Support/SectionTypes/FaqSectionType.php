@@ -31,7 +31,7 @@ class FaqSectionType extends BaseSectionType
     public static function getDefaultContent(): array
     {
         return [
-            'intro' => 'Answers to common questions regarding how the coalition operates, financial accountability, and how to get involved.',
+            'intro' => 'Answers to common questions regarding our single group of 25 friends, weekly donations, food and clothes distribution, and 100% direct accountability.',
             'layout' => 'accordion',
             'items_count' => 8,
         ];

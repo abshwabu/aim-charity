@@ -26,158 +26,85 @@ class ItemSeeder extends Seeder
      */
     public function run(): void
     {
-        // 1. Friend Circles & Volunteer Teams (Giving Circles)
+        // 1. Single Association Group (Aim Charity: 25 Friends)
         $groups = [
             [
-                'name' => 'Founding Friends Circle',
-                'short_description' => 'The childhood friends who started pooling weekly donations around a coffee table to care for neighbors.',
-                'long_description' => '<p>Started by a close group of childhood friends who grew up on the same town streets, this circle coordinates weekly collections, reviews urgent neighbor requests, and leads Sunday morning visits to ensure every elder and struggling household receives personal care.</p>',
-                'focus_area' => 'Weekly Direct Aid & Elder Visits',
+                'name' => 'Aim Charity (25 Member Friends)',
+                'short_description' => 'Our single town charity group of 25 close friends pooling weekly funds to care for local neighbors.',
+                'long_description' => '<p>Aim Charity is not a federation, coalition, or corporate NGO. We are a single, tight-knit group of 25 childhood friends and town neighbors. Every week, our 25 members contribute whatever we can from our personal earnings to purchase and hand-deliver food, warm clothing, and emergency local aid to elderly neighbors and struggling families in our town.</p>',
+                'focus_area' => 'Food, Clothing & Local Town Aid',
                 'founded_year' => '2021',
                 'logo' => 'placeholders/groups/group-logo-1.svg',
                 'photo' => 'placeholders/groups/group-photo-1.svg',
-                'website_url' => 'https://example.org/founding-friends',
+                'website_url' => null,
                 'social_links' => [
-                    ['platform' => 'Telegram', 'url' => 'https://t.me/example'],
+                    ['platform' => 'Telegram', 'url' => 'https://t.me/aimcharity_et'],
                 ],
                 'is_visible' => true,
                 'sort_order' => 1,
             ],
-            [
-                'name' => 'Town Youth Volunteers',
-                'short_description' => 'Energetic young graduates and high school alumni organizing weekend grocery deliveries and free tutoring.',
-                'long_description' => '<p>Composed of energetic town youth, university students on break, and young professionals who give their weekends to package food baskets, deliver flour and oil to elders on foot, and tutor town children in basic literacy and numeracy.</p>',
-                'focus_area' => 'Food Deliveries & Youth Tutoring',
-                'founded_year' => '2022',
-                'logo' => 'placeholders/groups/group-logo-2.svg',
-                'photo' => 'placeholders/groups/group-photo-2.svg',
-                'website_url' => 'https://example.org/town-youth',
-                'social_links' => [
-                    ['platform' => 'Telegram', 'url' => 'https://t.me/example'],
-                ],
-                'is_visible' => true,
-                'sort_order' => 2,
-            ],
-            [
-                'name' => 'Neighborhood Mothers & Elders Circle',
-                'short_description' => 'Respected mothers and elders who identify vulnerable households and prepare nourishing food care packages.',
-                'long_description' => '<p>With deep knowledge of every street and compound in our town, the mothers and elders ensure that aid is distributed fairly, discreetly, and with unconditional dignity. They oversee food packaging and personally check on sick neighbors.</p>',
-                'focus_area' => 'Family Welfare & Care Packages',
-                'founded_year' => '2021',
-                'logo' => 'placeholders/groups/group-logo-3.svg',
-                'photo' => 'placeholders/groups/group-photo-3.svg',
-                'website_url' => 'https://example.org/mothers-circle',
-                'social_links' => [],
-                'is_visible' => true,
-                'sort_order' => 3,
-            ],
-            [
-                'name' => 'Town Teachers & Education Circle',
-                'short_description' => 'Dedicated local school teachers who identify children needing uniforms, exercise books, and meal support.',
-                'long_description' => '<p>Teachers from our primary and secondary schools ensure that no child in town drops out of school due to lack of uniforms, pencils, or notebooks. They coordinate student sponsorships and monitor classroom attendance.</p>',
-                'focus_area' => 'Education & Student Supplies',
-                'founded_year' => '2022',
-                'logo' => 'placeholders/groups/group-logo-4.svg',
-                'photo' => 'placeholders/groups/group-photo-4.svg',
-                'website_url' => 'https://example.org/teachers-circle',
-                'social_links' => [],
-                'is_visible' => true,
-                'sort_order' => 4,
-            ],
-            [
-                'name' => 'Town Merchants & Grocers Circle',
-                'short_description' => 'Local shopkeepers and grocers providing food items at cost price and contributing weekly supplies.',
-                'long_description' => '<p>Local millers, grain merchants, and grocers who partner with our association by waiving profit margins on relief purchases and donating sacks of teff, cooking oil, and soap each week.</p>',
-                'focus_area' => 'At-Cost Groceries & Local Supply',
-                'founded_year' => '2022',
-                'logo' => 'placeholders/groups/group-logo-5.svg',
-                'photo' => 'placeholders/groups/group-photo-5.svg',
-                'website_url' => 'https://example.org/merchants-circle',
-                'social_links' => [],
-                'is_visible' => true,
-                'sort_order' => 5,
-            ],
-            [
-                'name' => 'Diaspora Friends of the Town',
-                'short_description' => 'Former residents living across Ethiopia and abroad who send regular weekly and monthly gifts home.',
-                'long_description' => '<p>Friends who were born and raised in our small town but now live in larger cities or abroad, staying connected to their roots by faithfully contributing to our weekly pool for local families.</p>',
-                'focus_area' => 'Remote Giving & Solidarity',
-                'founded_year' => '2023',
-                'logo' => 'placeholders/groups/group-logo-6.svg',
-                'photo' => 'placeholders/groups/group-photo-6.svg',
-                'website_url' => 'https://example.org/diaspora-friends',
-                'social_links' => [],
-                'is_visible' => true,
-                'sort_order' => 6,
-            ],
         ];
 
+        MemberGroup::query()->delete();
         foreach ($groups as $group) {
-            MemberGroup::query()->updateOrCreate(['name' => $group['name']], $group);
+            MemberGroup::query()->create($group);
         }
 
-        $friendGroup = MemberGroup::query()->where('name', 'Founding Friends Circle')->first();
+        $friendGroup = MemberGroup::query()->first();
 
-        // 2. Programs (Town Initiatives)
+        // 2. Programs (Food, Clothing & Local Support — Local Town Only)
         $programs = [
             [
-                'title' => 'Weekly Elder Care & Food Baskets',
-                'description' => '<p>Many elderly town residents live without family support or pension. Every Sunday morning, our volunteer team delivers nutritious food baskets containing teff, wheat flour, lentils, cooking oil, and soap directly to their homes, spending time visiting and checking on their health.</p>',
-                'icon' => 'heroicon-o-heart',
+                'title' => 'Food Support for Local Families & Elders',
+                'description' => '<p>Every Sunday morning, our 25 members pack and personally deliver nourishing food baskets containing teff, wheat flour, edible cooking oil, lentils, and sugar directly to elderly neighbors and struggling families in our town who cannot afford daily meals.</p>',
+                'icon' => 'heroicon-o-shopping-bag',
                 'image' => 'placeholders/programs/program-1.svg',
                 'is_visible' => true,
                 'sort_order' => 1,
             ],
             [
-                'title' => 'Back-to-School Supplies for Town Kids',
-                'description' => '<p>Working hand-in-hand with town teachers, we provide complete sets of exercise books, pens, backpacks, and tailored uniforms before each academic semester, ensuring every child in our town can attend school with pride and confidence.</p>',
-                'icon' => 'heroicon-o-academic-cap',
+                'title' => 'Clothing, Blankets & Warmth Support',
+                'description' => '<p>We collect and purchase warm winter jackets, sweaters, shoes, and heavy blankets for town elders, bedridden neighbors, and children facing cold highland nights, as well as school uniforms for kids in need.</p>',
+                'icon' => 'heroicon-o-sparkles',
                 'image' => 'placeholders/programs/program-2.svg',
                 'is_visible' => true,
                 'sort_order' => 2,
             ],
             [
-                'title' => 'Emergency Neighbor Medical Fund',
-                'description' => '<p>A sudden illness should never impoverish a family. When a neighbor faces acute medical costs, our emergency fund immediately covers hospital pharmacy prescriptions, diagnostic tests, and emergency ambulance or transit fees.</p>',
-                'icon' => 'heroicon-o-shield-check',
+                'title' => 'Local Town Needs & Emergency Aid',
+                'description' => '<p>We take care of other urgent local needs in our neighborhood: buying school exercise books and pens so town children stay in school, paying for urgent clinic prescriptions and medicine for sick neighbors, and doing quick compound or roof repairs before the rainy season.</p>',
+                'icon' => 'heroicon-o-heart',
                 'image' => 'placeholders/programs/program-3.svg',
                 'is_visible' => true,
                 'sort_order' => 3,
             ],
-            [
-                'title' => 'Home Warmth & Rainy Season Repairs',
-                'description' => '<p>Before the heavy seasonal rains arrive, our volunteer youth inspect compounds of elderly and widowed neighbors to replace damaged iron roofing sheets, seal windows, and provide clean warm blankets and mattresses.</p>',
-                'icon' => 'heroicon-o-home-modern',
-                'image' => 'placeholders/programs/program-4.svg',
-                'is_visible' => true,
-                'sort_order' => 4,
-            ],
         ];
 
+        Program::query()->delete();
         foreach ($programs as $program) {
-            Program::query()->updateOrCreate(['title' => $program['title']], $program);
+            Program::query()->create($program);
         }
 
         // 3. Impact Stats
         $stats = [
             [
-                'value' => '120+',
-                'label' => 'Contributing Friends & Neighbors',
+                'value' => '25',
+                'label' => 'Member Friends in Our Group',
                 'icon' => 'heroicon-o-user-group',
                 'is_visible' => true,
                 'sort_order' => 1,
             ],
             [
                 'value' => '85+',
-                'label' => 'Local Families Supported Monthly',
+                'label' => 'Town Families Supported with Food & Clothes',
                 'icon' => 'heroicon-o-heart',
                 'is_visible' => true,
                 'sort_order' => 2,
             ],
             [
-                'value' => '250+',
-                'label' => 'School Children Equipped with Supplies',
-                'icon' => 'heroicon-o-academic-cap',
+                'value' => '150+',
+                'label' => 'Warm Blankets & Clothes Distributed',
+                'icon' => 'heroicon-o-sparkles',
                 'is_visible' => true,
                 'sort_order' => 3,
             ],
@@ -190,44 +117,46 @@ class ItemSeeder extends Seeder
             ],
         ];
 
+        ImpactStat::query()->delete();
         foreach ($stats as $stat) {
-            ImpactStat::query()->updateOrCreate(['label' => $stat['label']], $stat);
+            ImpactStat::query()->create($stat);
         }
 
         // 4. How It Works Steps
         $steps = [
             [
-                'title' => 'Friends Pool Weekly Donations',
-                'description' => 'Friends, neighbors, and diaspora contributors send small weekly amounts via Telebirr or CBE into a dedicated community pool.',
+                'title' => '25 Friends Pool Weekly Donations',
+                'description' => 'Every Sunday, our 25 members contribute whatever we can afford into our dedicated pool via Telebirr or CBE.',
                 'icon' => 'heroicon-o-banknotes',
                 'is_visible' => true,
                 'sort_order' => 1,
             ],
             [
                 'title' => 'Personal Neighbor Visits',
-                'description' => 'Our committee visits families in town, consults neighborhood elders and teachers, and verifies genuine needs with dignity.',
+                'description' => 'We personally visit homes in our town, consult neighbors, and check who urgently needs food, warm clothes, or medicine.',
                 'icon' => 'heroicon-o-user-plus',
                 'is_visible' => true,
                 'sort_order' => 2,
             ],
             [
-                'title' => 'Direct Local Purchase',
-                'description' => 'We buy groceries, medicines, and school books directly from town grocers and merchants at wholesale/cost prices.',
+                'title' => 'Direct Local Purchases',
+                'description' => 'We buy teff, cooking oil, blankets, and school supplies directly from local town merchants at cost price.',
                 'icon' => 'heroicon-o-shopping-bag',
                 'is_visible' => true,
                 'sort_order' => 3,
             ],
             [
-                'title' => 'Handover with Open Books',
-                'description' => 'Aid is handed directly to families on Sunday mornings, and complete expense receipts are shared in our friend Telegram group.',
+                'title' => 'In-Person Handover with Open Receipts',
+                'description' => 'We hand-deliver food and clothes directly to our neighbors every Sunday, sharing all receipts openly with zero admin deductions.',
                 'icon' => 'heroicon-o-document-check',
                 'is_visible' => true,
                 'sort_order' => 4,
             ],
         ];
 
+        Step::query()->delete();
         foreach ($steps as $step) {
-            Step::query()->updateOrCreate(['title' => $step['title']], $step);
+            Step::query()->create($step);
         }
 
         // 5. Testimonials
@@ -242,16 +171,16 @@ class ItemSeeder extends Seeder
                 'sort_order' => 1,
             ],
             [
-                'quote' => 'Because of our friends circle, 42 of my fifth-grade students received uniforms, backpacks, and books this term. None of them had to drop out.',
+                'quote' => 'Because of the 25 friends, our students received warm school sweaters, backpacks, and exercise books this term. None of them had to drop out.',
                 'author_name' => 'Teacher Solomon Haile',
-                'author_role' => 'Primary School Instructor',
+                'author_role' => 'Local Primary School Instructor',
                 'author_photo' => 'placeholders/testimonials/testimonial-2.svg',
                 'member_group_id' => $friendGroup?->id,
                 'is_visible' => true,
                 'sort_order' => 2,
             ],
             [
-                'quote' => 'We started with just five friends giving whatever we had in our pockets each Friday. Seeing our whole town rally around our neighbors is the greatest blessing.',
+                'quote' => 'We started with just friends giving whatever pocket money we had each week. Seeing our whole neighborhood cared for with food and warmth is the greatest blessing.',
                 'author_name' => 'Dawit Tesfaye',
                 'author_role' => 'Founding Friend & Donor',
                 'author_photo' => 'placeholders/testimonials/testimonial-3.svg',
@@ -261,8 +190,9 @@ class ItemSeeder extends Seeder
             ],
         ];
 
+        Testimonial::query()->delete();
         foreach ($testimonials as $testimonial) {
-            Testimonial::query()->updateOrCreate(['author_name' => $testimonial['author_name']], $testimonial);
+            Testimonial::query()->create($testimonial);
         }
 
         // 6. Gallery Items
@@ -276,16 +206,16 @@ class ItemSeeder extends Seeder
                 'sort_order' => 1,
             ],
             [
-                'alt_text' => 'Children smiling with new exercise books and school bags.',
-                'caption' => 'Local students receiving new exercise books and tailored uniforms before the school term.',
+                'alt_text' => 'Children smiling with new warm clothes, shoes, and exercise books.',
+                'caption' => 'Local students receiving warm clothing, shoes, and exercise books for school.',
                 'image' => 'placeholders/gallery/gallery-2.svg',
                 'member_group_id' => $friendGroup?->id,
                 'is_visible' => true,
                 'sort_order' => 2,
             ],
             [
-                'alt_text' => 'Volunteer visiting an elderly town resident at home.',
-                'caption' => 'Weekend home visits bringing companionship, food supplies, and medical checkups.',
+                'alt_text' => 'Friends visiting an elderly town resident at home with food supplies.',
+                'caption' => 'Weekend home visits bringing companionship, food supplies, and essential care.',
                 'image' => 'placeholders/gallery/gallery-3.svg',
                 'member_group_id' => $friendGroup?->id,
                 'is_visible' => true,
@@ -301,55 +231,57 @@ class ItemSeeder extends Seeder
             ],
         ];
 
+        GalleryItem::query()->delete();
         foreach ($gallery as $item) {
-            GalleryItem::query()->updateOrCreate(['caption' => $item['caption']], $item);
+            GalleryItem::query()->create($item);
         }
 
         // 7. FAQs
         $faqs = [
             [
                 'question' => 'What is Aim Charity and how did it start?',
-                'answer' => '<p>Aim Charity is a small-town charity association started by a group of close childhood friends in Ethiopia. We started by pooling small weekly donations to care for elderly neighbors and struggling families in our hometown. We are not a large corporate establishment; we are friends and neighbors volunteering our time.</p>',
+                'answer' => '<p>Aim Charity is a small-town charity association started by a group of 25 close childhood friends in Ethiopia. We started by pooling small weekly donations to care for elderly neighbors and struggling families in our hometown. We are not a large corporate establishment; we are 25 friends and neighbors volunteering our own time.</p>',
                 'is_visible' => true,
                 'sort_order' => 1,
             ],
             [
-                'question' => 'How does the weekly donation model work?',
-                'answer' => '<p>Anyone can give weekly — whether it is 50, 100, or 500 Birr. Donors transfer directly via Telebirr or CBE. Every weekend, the pooled contributions are used to buy food, medicine, and school supplies for verified neighbors in town.</p>',
+                'question' => 'Are there other groups, chapters, or branches?',
+                'answer' => '<p>No. There is only our single group of 25 members. We focus 100% on our own local town and neighborhood rather than running broad country-wide programs.</p>',
                 'is_visible' => true,
                 'sort_order' => 2,
             ],
             [
-                'question' => 'Does Aim Charity take administrative fees or salaries?',
-                'answer' => '<p>Zero percent. None of the founding friends or volunteers receive salaries or administrative compensation. 100% of every birr donated goes directly into purchasing aid for town residents.</p>',
+                'question' => 'What kinds of support do you provide?',
+                'answer' => '<p>Our primary focus is weekly food support (teff, flour, cooking oil, grains) and clothing support (jackets, sweaters, blankets, shoes, school uniforms). We also assist with local urgent needs like clinic medicine and school supplies for children.</p>',
                 'is_visible' => true,
                 'sort_order' => 3,
             ],
             [
-                'question' => 'How do you choose which neighbors receive assistance?',
-                'answer' => '<p>Because we live in the town and know our community, we work with trusted neighborhood elders and teachers to identify those in greatest need. Friends personally visit every household to assess situations with warmth, privacy, and respect.</p>',
+                'question' => 'Does Aim Charity take administrative fees or salaries?',
+                'answer' => '<p>Zero percent. None of the 25 friends receive salaries or administrative compensation. 100% of every birr donated goes directly into purchasing food, clothes, and supplies for town residents.</p>',
                 'is_visible' => true,
                 'sort_order' => 4,
             ],
             [
-                'question' => 'Can friends outside our town or in the diaspora join?',
-                'answer' => '<p>Yes, warmly! Many of our regular weekly contributors are friends who grew up in our town and now live in other cities or abroad, keeping their hometown connection alive through regular giving.</p>',
+                'question' => 'How can someone join or support the weekly giving?',
+                'answer' => '<p>Anyone who wants to support our town can contribute weekly or monthly via our CBE bank account or Telebirr number. All contributions go straight to our neighbor aid pool.</p>',
                 'is_visible' => true,
                 'sort_order' => 5,
             ],
         ];
 
+        Faq::query()->delete();
         foreach ($faqs as $faq) {
-            Faq::query()->updateOrCreate(['question' => $faq['question']], $faq);
+            Faq::query()->create($faq);
         }
 
         // 8. Donation Methods
         $methods = [
             [
                 'label' => 'Commercial Bank of Ethiopia (CBE)',
-                'account_name' => 'Aim Charity Association [Small-Town Giving Circle]',
+                'account_name' => 'Aim Charity Association (25 Friends Town Group)',
                 'account_number' => '1000-0000-0000-0000',
-                'instructions' => 'Add "Weekly Friend Donation" and your name in the transfer reason. 100% directly purchases food and medical aid for town neighbors.',
+                'instructions' => 'Add "Weekly Friend Donation" and your name in the transfer reason. 100% directly purchases food, clothes, and medical aid for town neighbors.',
                 'logo' => 'placeholders/donation/cbe-logo.svg',
                 'qr_image' => 'placeholders/donation/qr-cbe.svg',
                 'is_visible' => true,
@@ -357,9 +289,9 @@ class ItemSeeder extends Seeder
             ],
             [
                 'label' => 'Telebirr Mobile Money',
-                'account_name' => 'Aim Charity Town Circle',
+                'account_name' => 'Aim Charity Town Friends',
                 'account_number' => '+251 91 123 4567',
-                'instructions' => 'Send your weekly gift directly via Telebirr with note "Town Support". Instant confirmation sent to our coordinator.',
+                'instructions' => 'Send your weekly gift directly via Telebirr with note "Town Food & Clothes". Instant confirmation sent to our coordinator.',
                 'logo' => 'placeholders/donation/telebirr-logo.svg',
                 'qr_image' => 'placeholders/donation/qr-telebirr.svg',
                 'is_visible' => true,
@@ -367,8 +299,9 @@ class ItemSeeder extends Seeder
             ],
         ];
 
+        DonationMethod::query()->delete();
         foreach ($methods as $method) {
-            DonationMethod::query()->updateOrCreate(['label' => $method['label']], $method);
+            DonationMethod::query()->create($method);
         }
 
         // 9. Partners (Local Pillars)
@@ -403,43 +336,45 @@ class ItemSeeder extends Seeder
             ],
         ];
 
+        Partner::query()->delete();
         foreach ($partners as $partner) {
-            Partner::query()->updateOrCreate(['name' => $partner['name']], $partner);
+            Partner::query()->create($partner);
         }
 
         // 10. News Posts
         $news = [
             [
-                'title' => 'Celebrating Our 50th Consecutive Weekly Food Basket Delivery',
-                'slug' => '50th-weekly-food-basket-delivery',
-                'excerpt' => 'What began as five friends pooling a few birr has now delivered 50 uninterrupted weeks of fresh food support to 85 town households.',
-                'body' => '<p>This Sunday marks a humble but meaningful milestone for Aim Charity: 50 consecutive weeks of food basket deliveries. Every single Sunday for almost a full year, our volunteer youth and friends have visited the homes of elderly neighbors and struggling families with bags of teff flour, cooking oil, lentils, and basic hygiene supplies.</p><p>We want to thank every friend, neighbor, and diaspora contributor whose weekly 50, 100, or 500 Birr gifts made this consistency possible. In a small town, consistency is everything. Our elders know that every Sunday morning, a knock on their door means breakfast, respect, and love from the community.</p>',
+                'title' => 'Delivered Weekly Food Baskets to 42 Town Elder Households',
+                'slug' => 'delivered-weekly-food-baskets-to-town-elders',
+                'excerpt' => 'Our 25 members completed Sunday deliveries of teff, cooking oil, and flour to elderly neighbors across town.',
+                'body' => '<p>This Sunday marks another week of dedicated service for Aim Charity. Every Sunday, our group of 25 friends visits the homes of elderly neighbors and struggling families with bags of teff flour, cooking oil, lentils, and basic necessities.</p><p>We want to thank every friend and neighbor whose weekly contributions made this consistency possible. In our small town, consistency is everything. Our elders know that every Sunday morning, a knock on their door means breakfast, respect, and love from their community.</p>',
                 'cover_image' => 'placeholders/news/news-1.svg',
                 'published_at' => Carbon::now()->subDays(3),
                 'is_visible' => true,
             ],
             [
-                'title' => 'Back to School: 250 Town Children Equipped for the New Term',
-                'slug' => 'back-to-school-250-children-equipped',
-                'excerpt' => 'Thanks to our weekly education pool, 250 students across three town schools received tailored uniforms and complete stationery sets.',
-                'body' => '<p>Education is the best gift our community can give its children. Ahead of the new school term, our Town Teachers Circle coordinated with local tailors and stationery shops to provide 250 children with durable uniforms, backpacks, pencils, and exercise books.</p><p>Seeing these young students walk into school with smiles on their faces and books in hand is a testament to what friends can do when we pool our efforts. Thank you to everyone who contributed to our Back-to-School drive.</p>',
+                'title' => 'Winter Clothing & Blanket Drive Warms Local Children and Elders',
+                'slug' => 'winter-clothing-blanket-drive-warms-town',
+                'excerpt' => 'Thanks to weekly pooled contributions, we distributed warm sweaters, jackets, and blankets to town residents before the cold rains.',
+                'body' => '<p>Cold highland nights can be difficult for our elders and young students. Ahead of the cold rainy season, our 25 members collected and purchased warm sweaters, durable shoes, and heavy blankets for town families in need.</p><p>Seeing these children and elders warm and comfortable is a testament to what friends can do when we pool our efforts. Thank you to everyone who contributed to our clothing drive.</p>',
                 'cover_image' => 'placeholders/news/news-2.svg',
                 'published_at' => Carbon::now()->subDays(12),
                 'is_visible' => true,
             ],
         ];
 
+        NewsPost::query()->delete();
         foreach ($news as $post) {
-            NewsPost::query()->updateOrCreate(['slug' => $post['slug']], $post);
+            NewsPost::query()->create($post);
         }
 
-        // 11. Team Members (Founding Friends & Coordinators)
+        // 11. Team Members (Founding Friends Among the 25 Members)
         $team = [
             [
                 'name' => 'Dawit Mekonnen',
-                'role' => 'Founding Friend & Coordinator',
+                'role' => 'Founding Friend & Food Logistics',
                 'photo' => 'placeholders/team/team-1.svg',
-                'bio' => 'One of the childhood friends who initiated our weekly giving circle. Coordinates Sunday deliveries and volunteers.',
+                'bio' => 'One of the 25 friends who initiated our weekly giving. Coordinates weekly food purchases and Sunday grocery deliveries.',
                 'is_visible' => true,
                 'sort_order' => 1,
             ],
@@ -447,7 +382,7 @@ class ItemSeeder extends Seeder
                 'name' => 'Bethlehem Tadesse',
                 'role' => 'Elder Welfare & Family Visits',
                 'photo' => 'placeholders/team/team-2.svg',
-                'bio' => 'Leads our home visits team, ensuring elderly neighbors and single mothers receive food baskets and personal care.',
+                'bio' => 'Coordinates neighbor visits among our 25 members, ensuring elderly neighbors and single mothers receive food and clothing support.',
                 'is_visible' => true,
                 'sort_order' => 2,
             ],
@@ -455,22 +390,23 @@ class ItemSeeder extends Seeder
                 'name' => 'Yonas Girma',
                 'role' => 'Weekly Accounts & Transparency',
                 'photo' => 'placeholders/team/team-3.svg',
-                'bio' => 'Reconciles weekly Telebirr and bank donations, verifies merchant receipts, and publishes open records to our donor group.',
+                'bio' => 'Reconciles weekly Telebirr and bank donations, verifies merchant receipts, and publishes open records to our 25 members group chat.',
                 'is_visible' => true,
                 'sort_order' => 3,
             ],
             [
                 'name' => 'Selamawit Abebe',
-                'role' => 'Education & Youth Volunteer Lead',
+                'role' => 'Clothing & Local Supplies Lead',
                 'photo' => 'placeholders/team/team-4.svg',
-                'bio' => 'Works directly with town school teachers to identify students in need and manages our weekend youth tutoring sessions.',
+                'bio' => 'Manages seasonal clothing and blanket drives, student uniform fittings, and emergency local medicine support.',
                 'is_visible' => true,
                 'sort_order' => 4,
             ],
         ];
 
+        TeamMember::query()->delete();
         foreach ($team as $member) {
-            TeamMember::query()->updateOrCreate(['name' => $member['name']], $member);
+            TeamMember::query()->create($member);
         }
 
         Site::flushCache();

@@ -19,7 +19,7 @@ class MemberGroupsSectionType extends BaseSectionType
 
     public static function getLabel(): string
     {
-        return 'Member Groups (Coalition Organizations)';
+        return 'Association Members & Group Showcase';
     }
 
     public static function getIcon(): string
@@ -30,7 +30,7 @@ class MemberGroupsSectionType extends BaseSectionType
     public static function getDefaultContent(): array
     {
         return [
-            'intro' => 'Aim Charity brings together registered community associations, elders committees, and youth relief networks from across Ethiopia.',
+            'intro' => 'Aim Charity is a single group of 25 childhood friends and town neighbors dedicated to local food, clothing, and neighbor support.',
             'layout' => 'grid',
             'show_all' => true,
         ];
@@ -39,13 +39,13 @@ class MemberGroupsSectionType extends BaseSectionType
     public static function formSchema(): array
     {
         return [
-            Section::make('Member Groups Showcase')
-                ->description('Configure display settings for coalition member organizations.')
+            Section::make('Association Details')
+                ->description('Configure display settings for association details.')
                 ->schema([
                     Textarea::make('content.intro')
                         ->label('Section Intro Copy')
                         ->rows(2)
-                        ->placeholder('Introductory explanation of the member organizations...')
+                        ->placeholder('Introductory explanation of our 25 members...')
                         ->helperText('Visible paragraph text right under the section heading.'),
 
                     Select::make('content.layout')

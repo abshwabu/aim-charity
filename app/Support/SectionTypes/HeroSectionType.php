@@ -31,18 +31,18 @@ class HeroSectionType extends BaseSectionType
     public static function getDefaultContent(): array
     {
         return [
-            'headline' => 'Empowering Communities, Transforming Lives Together',
-            'subheadline' => 'A coalition of grassroots community organizations in Ethiopia united to deliver mutual aid, relief, and sustainable impact.',
+            'headline' => 'Started by Friends. Sustained by Weekly Kindness.',
+            'subheadline' => 'A small-town charity association of 25 close friends. We pool weekly donations to provide food, clothes, and direct local support to neighbors in need.',
             'video_url' => null,
             'background_image' => null,
             'stat_chips' => [
-                ['value' => '10+', 'label' => 'Grassroots Groups', 'icon' => 'heroicon-o-user-group'],
-                ['value' => '50K+', 'label' => 'People Helped', 'icon' => 'heroicon-o-heart'],
-                ['value' => '100%', 'label' => 'Direct Impact', 'icon' => 'heroicon-o-check-badge'],
+                ['value' => '25', 'label' => 'Dedicated Members', 'icon' => 'heroicon-o-user-group'],
+                ['value' => '85+', 'label' => 'Town Families Supported', 'icon' => 'heroicon-o-heart'],
+                ['value' => '100%', 'label' => 'Direct to Neighbors', 'icon' => 'heroicon-o-check-badge'],
             ],
             'collage_images' => [],
             'buttons' => [
-                ['label' => 'Donate Now', 'link_type' => 'section', 'target' => 'donate', 'url' => null, 'style' => 'primary'],
+                ['label' => 'Start Weekly Giving', 'link_type' => 'section', 'target' => 'donate', 'url' => null, 'style' => 'primary'],
                 ['label' => 'Our Programs', 'link_type' => 'section', 'target' => 'programs', 'url' => null, 'style' => 'outline'],
             ],
         ];
@@ -87,14 +87,14 @@ class HeroSectionType extends BaseSectionType
                 ->schema([
                     TextInput::make('content.headline')
                         ->label('Hero Headline')
-                        ->placeholder('Empowering Communities, Transforming Lives Together')
+                        ->placeholder('Started by Friends. Sustained by Weekly Kindness.')
                         ->helperText('High-impact title displayed prominently at the very top of the page.'),
 
                     Textarea::make('content.subheadline')
                         ->label('Hero Subheadline')
                         ->rows(3)
-                        ->placeholder('A coalition of grassroots community organizations in Ethiopia...')
-                        ->helperText('Clear subtitle explaining the purpose of the Aim Charity coalition.'),
+                        ->placeholder('A small-town charity association of 25 close friends...')
+                        ->helperText('Clear subtitle explaining the purpose of our small-town charity association.'),
 
                     static::buttonRepeater('content.buttons', 'Hero Action Buttons'),
                 ]),

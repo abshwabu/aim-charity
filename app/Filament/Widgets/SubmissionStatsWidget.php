@@ -40,8 +40,8 @@ class SubmissionStatsWidget extends BaseWidget
                 ->descriptionIcon('heroicon-m-newspaper')
                 ->color('success'),
 
-            Stat::make('Friend Circles', (string) $activeMembersCount)
-                ->description('Active giving circles & teams')
+            Stat::make('Group Members', (string) $activeMembersCount)
+                ->description('Active association members')
                 ->descriptionIcon('heroicon-m-user-group')
                 ->color('info'),
         ];

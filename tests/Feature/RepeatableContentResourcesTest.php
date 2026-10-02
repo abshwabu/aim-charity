@@ -297,6 +297,6 @@ class RepeatableContentResourcesTest extends TestCase
         $response->assertSee('Unread Inquiries');
         $response->assertSee('Volunteer Applications');
         $response->assertSee('Weekly Supporters');
-        $response->assertSee('Friend Circles');
+        $response->assertSee('Group Members');
     }
 }

@@ -20,7 +20,7 @@ class TeamSectionType extends BaseSectionType
 
     public static function getLabel(): string
     {
-        return 'Team & Coalition Leadership';
+        return 'Team & Group Leadership';
     }
 
     public static function getIcon(): string
@@ -31,7 +31,7 @@ class TeamSectionType extends BaseSectionType
     public static function getDefaultContent(): array
     {
         return [
-            'intro' => 'A dedicated steering committee comprised of community organizers, logistics coordinators, and humanitarian workers.',
+            'intro' => 'The founding friends and coordinating members among our 25-person group who manage weekly food collections, clothing drives, and neighbor visits.',
             'layout' => 'grid',
             'items_count' => 8,
         ];

@@ -30,7 +30,7 @@ class ContactSectionType extends BaseSectionType
     public static function getDefaultContent(): array
     {
         return [
-            'intro' => 'Have questions about our coalition, want to partner with us, or need assistance? Reach out to our team directly.',
+            'intro' => 'Have questions about our association, want to contribute to weekly giving, or know a neighbor in need? Reach out to our 25 members directly.',
             'labels' => [
                 'name' => 'Your Full Name',
                 'email' => 'Email Address',

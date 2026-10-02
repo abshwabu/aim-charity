@@ -27,15 +27,15 @@ class PageSectionSeeder extends Seeder
                 'content' => array_merge(SectionTypes::defaultContent('hero'), [
                     'eyebrow' => 'Small-Town Mutual Aid',
                     'heading' => 'Started by Friends. Sustained by Weekly Kindness.',
-                    'subheading' => 'A small-town charity association founded by a close group of friends in Ethiopia. We pool weekly donations to care for elderly neighbors, support local families, and keep children in school.',
+                    'subheading' => 'A small-town charity association of 25 close friends. We pool weekly donations to provide food, clothes, and direct local support to neighbors in need.',
                     'collage_images' => [
                         'placeholders/hero/hero-collage-1.svg',
                         'placeholders/hero/hero-collage-2.svg',
                         'placeholders/hero/hero-collage-3.svg',
                     ],
                     'stat_chips' => [
-                        ['value' => '120+', 'label' => 'Weekly Friends', 'icon' => 'heroicon-o-user-group'],
-                        ['value' => '85+', 'label' => 'Families Supported', 'icon' => 'heroicon-o-heart'],
+                        ['value' => '25', 'label' => 'Dedicated Members', 'icon' => 'heroicon-o-user-group'],
+                        ['value' => '85+', 'label' => 'Town Families Supported', 'icon' => 'heroicon-o-heart'],
                         ['value' => '100%', 'label' => 'Direct to Neighbors', 'icon' => 'heroicon-o-check-badge'],
                     ],
                     'body' => null,
@@ -56,9 +56,10 @@ class PageSectionSeeder extends Seeder
                 'anchor' => 'about',
                 'content' => array_merge(SectionTypes::defaultContent('about'), [
                     'eyebrow' => 'Our Story',
-                    'heading' => 'How a Group of Friends Started a Town Association',
-                    'subheading' => 'We are not a big establishment or distant bureaucracy — just friends and neighbors taking care of our hometown together.',
-                    'body' => '<p>It all began on a quiet weekend when a few childhood friends gathered for coffee in our town. Looking around our neighborhood, we saw elderly neighbors living alone without sufficient food, bright children missing school for lack of basic exercise books, and families overwhelmed by sudden clinic bills. We did not have institutional grants or corporate backing, but we had each other.</p><p>We decided to start pooling small weekly donations — whatever each friend could spare every week. What began as a handful of friends visiting neighbors on Sunday mornings grew into <strong>Aim Charity</strong>: a grassroots, small-town charity association where 100% of every weekly contribution goes directly to purchasing food baskets, medicine, and school supplies for neighbors in need.</p>',
+                    'heading' => 'How 25 Friends Started a Small-Town Association',
+                    'subheading' => 'We are not an NGO, not a country-wide program, and not a coalition — just 25 friends and neighbors taking care of our hometown.',
+                    'coalition_explainer' => 'Aim Charity was started by 25 childhood friends in our small town. Every week, we pool whatever we can from our own pockets to purchase and deliver food baskets, warm clothes, and local emergency support to neighbors in need — 100% direct with zero administrative overhead.',
+                    'body' => '<p>It all began when a close group of childhood friends met for coffee in our town. Looking around our neighborhood, we saw elderly neighbors living alone without enough food to eat, children shivering on cold mornings without warm clothes, and families struggling with sudden clinic bills. We did not have institutional funding or government grants, but we had our friendship and our love for our town.</p><p>We decided to start pooling small weekly donations — whatever each of us 25 friends could spare each week. What began as informal Sunday morning visits has grown into <strong>Aim Charity</strong>: a small-town charity association where our 25 members ensure that 100% of every contribution buys food, clothes, and local essentials for our neighbors.</p>',
                     'photos' => [
                         'placeholders/gallery/gallery-1.svg',
                         'placeholders/gallery/gallery-2.svg',
@@ -77,12 +78,12 @@ class PageSectionSeeder extends Seeder
                 'type' => 'member_groups',
                 'sort_order' => 3,
                 'is_visible' => true,
-                'nav_label' => 'Giving Circles',
+                'nav_label' => 'Our Group',
                 'anchor' => 'members',
                 'content' => array_merge(SectionTypes::defaultContent('member_groups'), [
-                    'eyebrow' => 'Our Giving Circles',
-                    'heading' => 'The Friend Circles That Give Every Week',
-                    'subheading' => 'From our founding childhood friends to local youth volunteers, mothers circles, and teachers — meet the groups who keep our town supported.',
+                    'eyebrow' => 'Our Association',
+                    'heading' => 'One Group of 25 Friends',
+                    'subheading' => 'We are not a coalition of multiple organizations. We are a single group of 25 childhood friends and town neighbors.',
                     'body' => null,
                 ]),
                 'style' => [
@@ -100,9 +101,9 @@ class PageSectionSeeder extends Seeder
                 'nav_label' => 'Programs',
                 'anchor' => 'programs',
                 'content' => array_merge(SectionTypes::defaultContent('programs'), [
-                    'eyebrow' => 'Town Initiatives',
-                    'heading' => 'Direct, Heartfelt Care for Our Town',
-                    'subheading' => 'Focused, community-verified initiatives ensuring our elderly, children, and struggling neighbors never stand alone.',
+                    'eyebrow' => 'Local Town Programs',
+                    'heading' => 'Food, Clothing & Local Neighbor Support',
+                    'subheading' => 'Practical, direct initiatives for our town: weekly food baskets, warm clothing and blankets, and emergency local assistance.',
                     'body' => null,
                 ]),
                 'style' => [
