@@ -13,12 +13,12 @@
     @if(filled($logoUrlDark) || filled($logoUrlLight))
         <div class="flex items-center">
             @if(filled($logoUrlDark))
-                <img src="{{ $logoUrlDark }}" alt="{{ $siteName }}" class="h-9 w-auto max-w-[200px] object-contain dark:hidden" />
+                <img src="{{ $logoUrlDark }}" alt="{{ $siteName }}" class="h-8 w-auto max-w-[200px] object-contain fi-logo-light dark:hidden" />
             @endif
             @if(filled($logoUrlLight))
-                <img src="{{ $logoUrlLight }}" alt="{{ $siteName }}" class="h-9 w-auto max-w-[200px] object-contain hidden dark:block" />
+                <img src="{{ $logoUrlLight }}" alt="{{ $siteName }}" class="h-8 w-auto max-w-[200px] object-contain fi-logo-dark hidden dark:block" />
             @elseif(filled($logoUrlDark))
-                <img src="{{ $logoUrlDark }}" alt="{{ $siteName }}" class="h-9 w-auto max-w-[200px] object-contain hidden dark:block" />
+                <img src="{{ $logoUrlDark }}" alt="{{ $siteName }}" class="h-8 w-auto max-w-[200px] object-contain fi-logo-dark hidden dark:block" />
             @endif
         </div>
     @else
