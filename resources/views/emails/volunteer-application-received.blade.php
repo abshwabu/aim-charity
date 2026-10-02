@@ -7,7 +7,7 @@
 <body style="font-family: ui-sans-serif, system-ui, sans-serif; background-color: #fbf9f5; color: #1c1917; padding: 32px 16px;">
     <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; border: 1px solid #e7e5e4; padding: 32px;">
         <h2 style="color: #1b4332; margin-top: 0; font-size: 22px;">New Volunteer Application Received</h2>
-        <p style="color: #78716c; font-size: 14px; margin-bottom: 24px;">A new volunteer has applied to join the Aim Charity coalition.</p>
+        <p style="color: #78716c; font-size: 14px; margin-bottom: 24px;">A new volunteer has applied to join the Aim Charity town association.</p>
 
         <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
             <tr>

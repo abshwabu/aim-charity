@@ -41,38 +41,38 @@ class LandingSectionsRenderTest extends TestCase
         $response->assertOk();
 
         // 1. Hero
-        $response->assertSee('When Communities Unite, Hope Becomes Real');
-        $response->assertSee('142K+');
+        $response->assertSee('Started by Friends. Sustained by Weekly Kindness.');
+        $response->assertSee('120+');
 
         // 2. About
-        $response->assertSee('Our Coalition Story');
-        $response->assertSee('Many Groups, One Unbroken Circle');
-        $response->assertSee('Radical Transparency');
+        $response->assertSee('Our Story');
+        $response->assertSee('How a Group of Friends Started a Town Association');
+        $response->assertSee('Complete Openness');
 
         // 3. Member Groups
-        $response->assertSee('Addis Mutual Aid Association');
-        $response->assertSee('Oromia Community Elders Committee');
-        $response->assertSee('Amhara Health & Reconstruction Taskforce');
+        $response->assertSee('Founding Friends Circle');
+        $response->assertSee('Town Youth Volunteers');
+        $response->assertSee('Neighborhood Mothers & Elders Circle');
 
         // 4. Programs
-        $response->assertSee('Emergency Nutritional Relief & Grain Reserves');
-        $response->assertSee('Community Clean Water Wells & Boreholes');
+        $response->assertSee('Weekly Elder Care & Food Baskets');
+        $response->assertSee('Back-to-School Supplies for Town Kids');
 
         // 5. Impact Stats
-        $response->assertSee('Individuals Provided Direct Emergency Relief');
-        $response->assertSee('Direct Grassroots Allocation & Open Auditing');
+        $response->assertSee('Contributing Friends & Neighbors');
+        $response->assertSee('Direct to Neighbors (Zero Overhead)');
 
         // 6. How It Works
-        $response->assertSee('Grassroots Need Verification');
-        $response->assertSee('Coalition Resource Pooling');
-        $response->assertSee('Dignified Direct Distribution');
+        $response->assertSee('Friends Pool Weekly Donations');
+        $response->assertSee('Personal Neighbor Visits');
+        $response->assertSee('Handover with Open Books');
 
         // 7. Testimonials
-        $response->assertSee('W/ro Aster Tesfaye');
-        $response->assertSee('Dr. Dawit Bekele');
+        $response->assertSee('Emaye Almaz Gebre');
+        $response->assertSee('Teacher Solomon Haile');
 
         // 8. Gallery
-        $response->assertSee('Volunteers loading sacks of grain for rural woreda distribution.');
+        $response->assertSee('Volunteers packing weekly food care baskets at the town community center.');
 
         // 9. Donate
         $response->assertSee('Commercial Bank of Ethiopia (CBE)');
@@ -88,29 +88,29 @@ class LandingSectionsRenderTest extends TestCase
         $response->assertSee('Send Message');
 
         // 12. Partners
-        $response->assertSee('Ethiopian Red Cross Society');
-        $response->assertSee('Addis Ababa University Community Service');
+        $response->assertSee('Town Community Elders Council');
+        $response->assertSee('Local Kebele Health Post');
 
         // 13. News
-        $response->assertSee('Emergency Grain Convoy Reaches 2,400 Families in North Wollo');
+        $response->assertSee('Celebrating Our 50th Consecutive Weekly Food Basket Delivery');
 
         // 14. FAQ
-        $response->assertSee('What makes Aim Charity different from conventional charities?');
+        $response->assertSee('What is Aim Charity and how did it start?');
 
         // 15. Team
-        $response->assertSee('Ato Yohannes Hailemariam');
-        $response->assertSee('Steering Committee Chairperson');
+        $response->assertSee('Dawit Mekonnen');
+        $response->assertSee('Founding Friend & Coordinator');
 
         // 16. CTA Banner
-        $response->assertSee('Take Action Today');
-        $response->assertSee('Together, We Can Deliver Hope and Relief Across Ethiopia');
+        $response->assertSee('Small Town, Big Heart. Stand With Our Neighbors.');
+        $response->assertSee('Start Weekly Giving');
     }
 
     public function test_hiding_a_section_in_admin_removes_it_from_the_page(): void
     {
         // Programs are visible initially
         $response = $this->get('/');
-        $response->assertSee('Emergency Nutritional Relief & Grain Reserves');
+        $response->assertSee('Weekly Elder Care & Food Baskets');
 
         // Hide programs section in DB and flush cache (simulating Filament save)
         PageSection::query()->where('key', 'programs')->update(['is_visible' => false]);
@@ -129,7 +129,7 @@ class LandingSectionsRenderTest extends TestCase
         $response = $this->get('/');
         $response->assertOk();
         $response->assertDontSee('id="programs"', false);
-        $response->assertDontSee('Emergency Nutritional Relief & Grain Reserves');
+        $response->assertDontSee('Weekly Elder Care & Food Baskets');
     }
 
     public function test_news_detail_route_renders_post_by_slug(): void
@@ -141,7 +141,7 @@ class LandingSectionsRenderTest extends TestCase
         $response->assertOk();
         $response->assertSee($post->title);
         $response->assertSee($post->excerpt);
-        $response->assertSee('verified family registries', false);
+        $response->assertSee('consecutive weeks of food basket deliveries', false);
     }
 
     public function test_news_detail_route_returns_404_for_invalid_slug(): void

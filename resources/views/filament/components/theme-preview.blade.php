@@ -92,11 +92,11 @@
             </div>
 
             <h3 class="mb-2 text-xl font-bold tracking-tight" style="font-family: '{{ $headingFont }}', sans-serif; color: {{ $text }};">
-                Coalition for Community Empowerment
+                Aim Charity Town Association
             </h3>
 
             <p class="mb-5 text-sm leading-relaxed opacity-80" style="font-family: '{{ $bodyFont }}', sans-serif;">
-                Aim Charity coordinates grassroots mutual aid, emergency relief, and educational initiatives across regional communities in Ethiopia.
+                Aim Charity was started by a group of friends in our small town to support elderly neighbors, families in need, and school children through weekly pooled donations.
             </p>
 
             <div class="flex flex-wrap items-center gap-3">

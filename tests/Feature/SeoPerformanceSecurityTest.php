@@ -45,7 +45,7 @@ class SeoPerformanceSecurityTest extends TestCase
         $response->assertSee('application/ld+json', false);
         $response->assertSee('NonprofitOrganization');
         $response->assertSee('NGO');
-        $response->assertSee('Addis Mutual Aid Association');
+        $response->assertSee('Founding Friends Circle');
         $response->assertSee('subOrganization');
         $response->assertSee('contactPoint');
     }

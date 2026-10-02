@@ -76,6 +76,17 @@
                         @endif
                     @endforeach
                 </div>
+            @elseif(filled($content['primary_button_text'] ?? null))
+                <div class="mt-4 flex flex-wrap items-center justify-center gap-4">
+                    <x-button variant="accent" size="lg" :href="$content['primary_button_url'] ?? '#donate'">
+                        {{ $content['primary_button_text'] }}
+                    </x-button>
+                    @if(filled($content['secondary_button_text'] ?? null))
+                        <x-button variant="outline-white" size="lg" :href="$content['secondary_button_url'] ?? '#volunteer'">
+                            {{ $content['secondary_button_text'] }}
+                        </x-button>
+                    @endif
+                </div>
             @endif
         </div>
     </div>

@@ -13,7 +13,7 @@
     $social = $settings->social ?? [];
 
     $siteName = $branding['site_name'] ?? config('app.name', 'Aim Charity');
-    $tagline = $branding['tagline'] ?? 'A coalition of grassroots community groups helping people in need in Ethiopia.';
+    $tagline = $branding['tagline'] ?? 'A small-town charity association started by friends in Ethiopia.';
     $logoUrl = filled($branding['logo_light'] ?? null)
         ? Site::imageUrl($branding['logo_light'])
         : (filled($branding['footer_logo'] ?? null) ? Site::imageUrl($branding['footer_logo']) : asset('favicon.ico'));
@@ -27,7 +27,7 @@
         }
     }
 
-    // Coalition Member Organizations
+    // Giving Circles & Teams
     $members = [];
     $memberGroups = Site::items()['member_groups'] ?? MemberGroup::query()->visible()->ordered()->get();
     foreach ($memberGroups as $group) {
@@ -47,7 +47,7 @@
                 '@type' => ['NGO', 'NonprofitOrganization'],
                 '@id' => url('/') . '#organization',
                 'name' => $siteName,
-                'alternateName' => 'Aim Charity Coalition',
+                'alternateName' => 'Aim Charity Association',
                 'description' => $tagline,
                 'url' => url('/'),
                 'logo' => [

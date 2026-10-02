@@ -8,7 +8,7 @@
         </x-slot>
 
         <x-slot name="description">
-            Every visible element is 100% database-driven and manageable through this admin portal.
+            Every visible element is 100% database-driven to support our small-town giving circle.
         </x-slot>
 
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -42,9 +42,9 @@
                     <span class="flex h-5 w-5 items-center justify-center rounded-full bg-teal-100 text-[11px] font-bold text-teal-800 dark:bg-teal-900/50 dark:text-teal-300">3</span>
                     <span>Repeatable Content</span>
                 </div>
-                <h4 class="mt-2 text-sm font-semibold text-gray-950 dark:text-white">Groups, Stats & FAQs</h4>
+                <h4 class="mt-2 text-sm font-semibold text-gray-950 dark:text-white">Circles, Stats & FAQs</h4>
                 <p class="mt-1 text-xs leading-relaxed text-gray-600 dark:text-gray-400">
-                    Under <strong class="font-medium text-gray-900 dark:text-gray-200">Content</strong>, manage coalition member organizations, programs, impact counters, testimonials, gallery items, and donation accounts.
+                    Under <strong class="font-medium text-gray-900 dark:text-gray-200">Content</strong>, manage friend giving circles, town programs, impact counters, neighbor testimonials, and donation accounts.
                 </p>
             </div>
 

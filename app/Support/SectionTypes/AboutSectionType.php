@@ -21,7 +21,7 @@ class AboutSectionType extends BaseSectionType
 
     public static function getLabel(): string
     {
-        return 'About the Coalition';
+        return 'About the Association';
     }
 
     public static function getIcon(): string
@@ -32,18 +32,18 @@ class AboutSectionType extends BaseSectionType
     public static function getDefaultContent(): array
     {
         return [
-            'coalition_explainer' => 'Aim Charity is a coalition ("a group of groups") uniting localized Ethiopian community organizations to pool resources, prevent duplicate aid, and deliver direct emergency assistance and development.',
-            'mission' => 'To empower vulnerable Ethiopian communities by coordinating grassroots efforts, optimizing charitable resources, and championing self-reliance.',
-            'vision' => 'An Ethiopia where every community possesses the collective resilience, resources, and solidarity to support those in need.',
-            'story' => '<p>Born out of grassroots neighborhood initiatives, Aim Charity recognized that isolated community groups achieve far greater impact when united. We coordinate logistics, verify needs, and ensure transparent distribution of every donation.</p>',
+            'coalition_explainer' => 'Aim Charity was started by a group of close friends in our small town. We pool weekly donations to care for elderly neighbors, support local families, and keep children in school — 100% direct with zero overhead.',
+            'mission' => 'To care for vulnerable neighbors in our town through consistent weekly giving, personal visits, and community solidarity.',
+            'vision' => 'A town where no elder goes hungry, no child leaves school for lack of supplies, and neighbors always support each other in times of need.',
+            'story' => '<p>Started by a close group of childhood friends around a coffee table, Aim Charity is a small-town charity association powered by weekly donations. We pool small contributions each week to directly support neighbors in need with complete openness and personal care.</p>',
             'images' => [],
             'values' => [
-                ['icon' => 'heroicon-o-shield-check', 'title' => 'Radical Transparency', 'text' => 'Full public accountability for every birr received and distributed.'],
-                ['icon' => 'heroicon-o-user-group', 'title' => 'Grassroots Solidarity', 'text' => 'Local leadership knows their communities best; we listen and support.'],
-                ['icon' => 'heroicon-o-sparkles', 'title' => 'Dignity in Relief', 'text' => 'Aid provided with respect, compassion, and a focus on long-term empowerment.'],
+                ['icon' => 'heroicon-o-heart', 'title' => 'Weekly Direct Care', 'text' => 'Small consistent weekly gifts deliver direct food, medical care, and dignity.'],
+                ['icon' => 'heroicon-o-shield-check', 'title' => 'Complete Openness', 'text' => '100% direct aid with every receipt and distribution shared openly with all friends.'],
+                ['icon' => 'heroicon-o-user-group', 'title' => 'Neighborly Solidarity', 'text' => 'Friends and community members looking after each other as family.'],
             ],
             'buttons' => [
-                ['label' => 'Learn About Member Groups', 'link_type' => 'section', 'target' => 'member_groups', 'url' => null, 'style' => 'primary'],
+                ['label' => 'Learn About Our Giving Circles', 'link_type' => 'section', 'target' => 'member_groups', 'url' => null, 'style' => 'primary'],
             ],
         ];
     }
@@ -51,13 +51,13 @@ class AboutSectionType extends BaseSectionType
     public static function formSchema(): array
     {
         return [
-            Section::make('The Coalition Identity')
-                ->description('Describe the "group of groups" structure and overarching story.')
+            Section::make('Association Identity & Story')
+                ->description('Describe the friend-founded town association and weekly donation story.')
                 ->schema([
                     Textarea::make('content.coalition_explainer')
-                        ->label('"Group of Groups" Explainer')
+                        ->label('Association Story & Giving Model')
                         ->rows(3)
-                        ->placeholder('Explain how Aim Charity operates as an alliance of local community organizations...')
+                        ->placeholder('Explain how Aim Charity operates as a small-town charity started by friends...')
                         ->helperText('Explains the unique collaborative model uniting grassroots groups in Ethiopia.'),
 
                     RichEditor::make('content.story')

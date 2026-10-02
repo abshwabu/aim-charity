@@ -35,13 +35,13 @@ class SubmissionStatsWidget extends BaseWidget
                 ->descriptionIcon('heroicon-m-user-plus')
                 ->color($pendingVolunteerCount > 0 ? 'primary' : 'gray'),
 
-            Stat::make('Newsletter Subscribers', (string) $subscribersCount)
-                ->description('Audience size')
+            Stat::make('Weekly Supporters', (string) $subscribersCount)
+                ->description('Town friends on update list')
                 ->descriptionIcon('heroicon-m-newspaper')
                 ->color('success'),
 
-            Stat::make('Coalition Members', (string) $activeMembersCount)
-                ->description('Active member organizations')
+            Stat::make('Friend Circles', (string) $activeMembersCount)
+                ->description('Active giving circles & teams')
                 ->descriptionIcon('heroicon-m-user-group')
                 ->color('info'),
         ];

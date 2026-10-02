@@ -25,18 +25,18 @@ class PageSectionSeeder extends Seeder
                 'nav_label' => 'Home',
                 'anchor' => 'hero',
                 'content' => array_merge(SectionTypes::defaultContent('hero'), [
-                    'eyebrow' => 'Coalition of Grassroots Organizations',
-                    'heading' => 'When Communities Unite, Hope Becomes Real',
-                    'subheading' => 'A coalition of grassroots community organizations across Ethiopia united to deliver mutual aid, relief, and sustainable impact to families in need.',
+                    'eyebrow' => 'Small-Town Mutual Aid',
+                    'heading' => 'Started by Friends. Sustained by Weekly Kindness.',
+                    'subheading' => 'A small-town charity association founded by a close group of friends in Ethiopia. We pool weekly donations to care for elderly neighbors, support local families, and keep children in school.',
                     'collage_images' => [
                         'placeholders/hero/hero-collage-1.svg',
                         'placeholders/hero/hero-collage-2.svg',
                         'placeholders/hero/hero-collage-3.svg',
                     ],
                     'stat_chips' => [
-                        ['value' => '6', 'label' => 'Community Groups', 'icon' => 'heroicon-o-user-group'],
-                        ['value' => '142K+', 'label' => 'People Helped', 'icon' => 'heroicon-o-heart'],
-                        ['value' => '100%', 'label' => 'Direct Transparency', 'icon' => 'heroicon-o-check-badge'],
+                        ['value' => '120+', 'label' => 'Weekly Friends', 'icon' => 'heroicon-o-user-group'],
+                        ['value' => '85+', 'label' => 'Families Supported', 'icon' => 'heroicon-o-heart'],
+                        ['value' => '100%', 'label' => 'Direct to Neighbors', 'icon' => 'heroicon-o-check-badge'],
                     ],
                     'body' => null,
                 ]),
@@ -55,10 +55,10 @@ class PageSectionSeeder extends Seeder
                 'nav_label' => 'About',
                 'anchor' => 'about',
                 'content' => array_merge(SectionTypes::defaultContent('about'), [
-                    'eyebrow' => 'Our Coalition Story',
-                    'heading' => 'Many Groups, One Unbroken Circle',
-                    'subheading' => 'How grassroots community organizations across Ethiopia came together to coordinate relief with dignity and solidarity.',
-                    'body' => '<p>In times of acute drought, conflict, and economic hardship, individual neighborhood groups and elder councils were each trying to respond independently. In 2021, representatives from community committees across Ethiopia sat down together. We realized that while our regions and languages differed, our mission was identical: safeguarding human life and dignity.</p><p>Aim Charity was born as a "group of groups." Instead of competing for fragmented resources or duplicating logistical convoys, our coalition shares storage warehouses, pools transport fleets, and combines volunteer networks to reach the most remote woredas quickly, fairly, and transparently.</p>',
+                    'eyebrow' => 'Our Story',
+                    'heading' => 'How a Group of Friends Started a Town Association',
+                    'subheading' => 'We are not a big establishment or distant bureaucracy — just friends and neighbors taking care of our hometown together.',
+                    'body' => '<p>It all began on a quiet weekend when a few childhood friends gathered for coffee in our town. Looking around our neighborhood, we saw elderly neighbors living alone without sufficient food, bright children missing school for lack of basic exercise books, and families overwhelmed by sudden clinic bills. We did not have institutional grants or corporate backing, but we had each other.</p><p>We decided to start pooling small weekly donations — whatever each friend could spare every week. What began as a handful of friends visiting neighbors on Sunday mornings grew into <strong>Aim Charity</strong>: a grassroots, small-town charity association where 100% of every weekly contribution goes directly to purchasing food baskets, medicine, and school supplies for neighbors in need.</p>',
                     'photos' => [
                         'placeholders/gallery/gallery-1.svg',
                         'placeholders/gallery/gallery-2.svg',
@@ -77,12 +77,12 @@ class PageSectionSeeder extends Seeder
                 'type' => 'member_groups',
                 'sort_order' => 3,
                 'is_visible' => true,
-                'nav_label' => 'Members',
+                'nav_label' => 'Giving Circles',
                 'anchor' => 'members',
                 'content' => array_merge(SectionTypes::defaultContent('member_groups'), [
-                    'eyebrow' => 'Our Coalition Members',
-                    'heading' => 'The Community Groups Behind Aim Charity',
-                    'subheading' => 'Rooted in neighborhoods, towns, and rural woredas across Ethiopia, our member organizations understand local realities best.',
+                    'eyebrow' => 'Our Giving Circles',
+                    'heading' => 'The Friend Circles That Give Every Week',
+                    'subheading' => 'From our founding childhood friends to local youth volunteers, mothers circles, and teachers — meet the groups who keep our town supported.',
                     'body' => null,
                 ]),
                 'style' => [
@@ -100,9 +100,9 @@ class PageSectionSeeder extends Seeder
                 'nav_label' => 'Programs',
                 'anchor' => 'programs',
                 'content' => array_merge(SectionTypes::defaultContent('programs'), [
-                    'eyebrow' => 'Our Focus Areas',
-                    'heading' => 'Targeted Relief & Sustainable Development',
-                    'subheading' => 'From emergency nutrition and medical clinics to clean water access and vocational training for youth and women.',
+                    'eyebrow' => 'Town Initiatives',
+                    'heading' => 'Direct, Heartfelt Care for Our Town',
+                    'subheading' => 'Focused, community-verified initiatives ensuring our elderly, children, and struggling neighbors never stand alone.',
                     'body' => null,
                 ]),
                 'style' => [
@@ -121,9 +121,9 @@ class PageSectionSeeder extends Seeder
                 'nav_label' => null,
                 'anchor' => 'impact',
                 'content' => array_merge(SectionTypes::defaultContent('impact_stats'), [
-                    'eyebrow' => 'Measurable Change',
-                    'heading' => 'Our Collective Impact in Numbers',
-                    'subheading' => 'Every contribution creates verifiable improvements in the daily lives of Ethiopian families.',
+                    'eyebrow' => 'Local Impact',
+                    'heading' => 'What Small Weekly Gifts Accomplish Together',
+                    'subheading' => 'When friends pool consistent weekly contributions, small gifts add up to life-changing support for our town.',
                     'body' => null,
                 ]),
                 'style' => [
@@ -141,9 +141,9 @@ class PageSectionSeeder extends Seeder
                 'nav_label' => 'How It Works',
                 'anchor' => 'how-it-works',
                 'content' => array_merge(SectionTypes::defaultContent('how_it_works'), [
-                    'eyebrow' => 'The Coalition Model',
-                    'heading' => 'How We Coordinate Relief & Assistance',
-                    'subheading' => 'A clear, four-step cycle from grassroots need identification to audited delivery.',
+                    'eyebrow' => 'Simple & Transparent',
+                    'heading' => 'How Our Weekly Giving Works',
+                    'subheading' => 'From weekly contributions among friends to direct handovers in our neighborhood.',
                     'body' => null,
                 ]),
                 'style' => [
@@ -162,9 +162,9 @@ class PageSectionSeeder extends Seeder
                 'nav_label' => null,
                 'anchor' => 'testimonials',
                 'content' => array_merge(SectionTypes::defaultContent('testimonials'), [
-                    'eyebrow' => 'Voices from the Field',
-                    'heading' => 'Stories of Hope & Community Strength',
-                    'subheading' => 'Listen to the direct testimonies of community elders, women entrepreneurs, and aid recipients.',
+                    'eyebrow' => 'Words from Neighbors',
+                    'heading' => 'Stories of Warmth, Dignity & Gratitude',
+                    'subheading' => 'Hear from elderly town residents, dedicated teachers, and participating friends.',
                     'body' => null,
                 ]),
                 'style' => [
@@ -182,9 +182,9 @@ class PageSectionSeeder extends Seeder
                 'nav_label' => 'Gallery',
                 'anchor' => 'gallery',
                 'content' => array_merge(SectionTypes::defaultContent('gallery'), [
-                    'eyebrow' => 'Field Photographs',
-                    'heading' => 'Moments of Community Action',
-                    'subheading' => 'Documenting distribution days, medical checkups, and volunteer mobilization across the country.',
+                    'eyebrow' => 'Moments in Our Town',
+                    'heading' => 'Our Weekly Deliveries in Pictures',
+                    'subheading' => 'Photographs from our Sunday morning food distributions, school supply handovers, and elder home visits.',
                     'body' => null,
                 ]),
                 'style' => [
@@ -203,9 +203,9 @@ class PageSectionSeeder extends Seeder
                 'nav_label' => 'Donate',
                 'anchor' => 'donate',
                 'content' => array_merge(SectionTypes::defaultContent('donate'), [
-                    'eyebrow' => 'Direct Support',
-                    'heading' => 'Support Our Community Relief Efforts',
-                    'subheading' => 'Contribute securely via local bank transfer, Telebirr, or direct account transfer.',
+                    'eyebrow' => 'Weekly Giving',
+                    'heading' => 'Support Our Town Giving Circle',
+                    'subheading' => 'Give weekly or monthly via Telebirr or CBE. 100% of your contribution directly purchases essentials for neighbors in our town.',
                     'body' => null,
                 ]),
                 'style' => [
@@ -224,8 +224,8 @@ class PageSectionSeeder extends Seeder
                 'anchor' => 'volunteer',
                 'content' => array_merge(SectionTypes::defaultContent('volunteer'), [
                     'eyebrow' => 'Get Involved',
-                    'heading' => 'Volunteer Your Time and Skills',
-                    'subheading' => 'Join our active volunteer registry to assist in local distributions, medical outreach, and logistical operations.',
+                    'heading' => 'Join Us on Weekend Visits',
+                    'subheading' => 'Help package food baskets, tutor neighborhood students, or visit elderly town residents with our volunteer team.',
                     'body' => null,
                 ]),
                 'style' => [
@@ -244,9 +244,9 @@ class PageSectionSeeder extends Seeder
                 'nav_label' => null,
                 'anchor' => 'team',
                 'content' => array_merge(SectionTypes::defaultContent('team'), [
-                    'eyebrow' => 'Leadership',
-                    'heading' => 'The Steering Committee & Coordinators',
-                    'subheading' => 'Meet the dedicated organizers facilitating coordination and accountability across our member groups.',
+                    'eyebrow' => 'Founding Friends',
+                    'heading' => 'The Friends Behind Aim Charity',
+                    'subheading' => 'Meet the childhood friends and town neighbors who volunteer their time to coordinate weekly giving.',
                     'body' => null,
                 ]),
                 'style' => [
@@ -264,13 +264,14 @@ class PageSectionSeeder extends Seeder
                 'nav_label' => null,
                 'anchor' => 'partners',
                 'content' => array_merge(SectionTypes::defaultContent('partners'), [
-                    'eyebrow' => 'Institutional Allies',
-                    'heading' => 'Our Partners in Relief and Resilience',
-                    'subheading' => 'Working together with civic institutions, humanitarian foundations, and diaspora associations.',
+                    'eyebrow' => 'Local Partners',
+                    'heading' => 'Working Hand-in-Hand with Town Pillars',
+                    'subheading' => 'We collaborate with local elders, neighborhood health clinics, and schools to identify families in need.',
                     'body' => null,
                 ]),
                 'style' => [
-                    'background_type' => 'none',
+                    'background_type' => 'color',
+                    'background_color' => '#f8fafc',
                     'text_theme' => 'light',
                     'vertical_padding' => 's',
                     'alignment' => 'center',
@@ -284,14 +285,13 @@ class PageSectionSeeder extends Seeder
                 'nav_label' => 'News',
                 'anchor' => 'news',
                 'content' => array_merge(SectionTypes::defaultContent('news'), [
-                    'eyebrow' => 'Dispatches & Reports',
-                    'heading' => 'Latest News & Field Updates',
-                    'subheading' => 'Read our monthly accountability reports, emergency alerts, and program milestones.',
+                    'eyebrow' => 'Town Updates',
+                    'heading' => 'Stories & Milestones from Our Town',
+                    'subheading' => 'Follow our weekly distribution reports, school preparation drives, and community milestones.',
                     'body' => null,
                 ]),
                 'style' => [
-                    'background_type' => 'color',
-                    'background_color' => '#f8fafc',
+                    'background_type' => 'none',
                     'text_theme' => 'light',
                     'vertical_padding' => 'm',
                     'alignment' => 'center',
@@ -305,13 +305,14 @@ class PageSectionSeeder extends Seeder
                 'nav_label' => 'FAQ',
                 'anchor' => 'faq',
                 'content' => array_merge(SectionTypes::defaultContent('faq'), [
-                    'eyebrow' => 'Questions Answered',
+                    'eyebrow' => 'Common Questions',
                     'heading' => 'Frequently Asked Questions',
-                    'subheading' => 'Clear details on donation handling, coalition membership criteria, and community verification.',
+                    'subheading' => 'Everything you need to know about our friend-founded association, weekly giving, and direct neighbor support.',
                     'body' => null,
                 ]),
                 'style' => [
-                    'background_type' => 'none',
+                    'background_type' => 'color',
+                    'background_color' => '#f8fafc',
                     'text_theme' => 'light',
                     'vertical_padding' => 'm',
                     'alignment' => 'center',
@@ -325,14 +326,13 @@ class PageSectionSeeder extends Seeder
                 'nav_label' => 'Contact',
                 'anchor' => 'contact',
                 'content' => array_merge(SectionTypes::defaultContent('contact'), [
-                    'eyebrow' => 'Reach Out',
-                    'heading' => 'Get in Touch with Our Coordination Office',
-                    'subheading' => 'We are here to answer questions, explore collaboration, or assist with community requests.',
+                    'eyebrow' => 'Get in Touch',
+                    'heading' => 'Reach Out to Our Friends Committee',
+                    'subheading' => 'Have questions about joining our weekly donor circle or know a neighbor in need? Send us a message.',
                     'body' => null,
                 ]),
                 'style' => [
-                    'background_type' => 'color',
-                    'background_color' => '#f8fafc',
+                    'background_type' => 'none',
                     'text_theme' => 'light',
                     'vertical_padding' => 'm',
                     'alignment' => 'center',
@@ -346,14 +346,20 @@ class PageSectionSeeder extends Seeder
                 'nav_label' => null,
                 'anchor' => 'cta',
                 'content' => array_merge(SectionTypes::defaultContent('cta_banner'), [
-                    'eyebrow' => null,
-                    'heading' => 'Together, We Can Deliver Hope and Relief Across Ethiopia',
-                    'subheading' => 'Join hundreds of donors, volunteers, and grassroots community organizers standing united.',
+                    'badge_text' => 'Join Our Circle',
+                    'eyebrow' => 'Join Our Circle',
+                    'heading' => 'Small Town, Big Heart. Stand With Our Neighbors.',
+                    'text' => 'Even a small weekly gift of 50 or 100 Birr provides warmth, food, and dignity to a family in our town.',
+                    'subheading' => 'Even a small weekly gift of 50 or 100 Birr provides warmth, food, and dignity to a family in our town.',
+                    'buttons' => [
+                        ['label' => 'Start Weekly Giving', 'link_type' => 'section', 'target' => 'donate', 'url' => null, 'style' => 'primary'],
+                        ['label' => 'Volunteer on Sundays', 'link_type' => 'section', 'target' => 'volunteer', 'url' => null, 'style' => 'outline'],
+                    ],
                     'body' => null,
                 ]),
                 'style' => [
                     'background_type' => 'color',
-                    'background_color' => '#064e3b',
+                    'background_color' => '#1b4332',
                     'text_theme' => 'dark',
                     'vertical_padding' => 'l',
                     'alignment' => 'center',
@@ -361,10 +367,10 @@ class PageSectionSeeder extends Seeder
             ],
         ];
 
-        foreach ($sections as $section) {
+        foreach ($sections as $sectionData) {
             PageSection::query()->updateOrCreate(
-                ['key' => $section['key']],
-                $section
+                ['key' => $sectionData['key']],
+                $sectionData
             );
         }
 
